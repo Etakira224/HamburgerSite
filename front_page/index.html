@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Isn't it necessary because I brought the file and read it? -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <script src="js\jquery-3.6.0.min.js"></script>
+    <script src="js\script.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="gridContainer">
+            <header class="l-header">
+                <div class="p-header">
+                    <p class="c-title p-header__menuOpener">Menu</p>   
+                    <p class="c-title p-header__title">Hamburger</p>
+                    <section class="p-header__search">
+                        <i class="fas fa-search"></i>
+                        <input class="c-searchBox" type="text">
+                        <button class="c-searchButton">検索</button>
+                    </section>
+                </div>
+            </header>
+            <main class="l-main">
+                <div class="l-main__TopHead">
+                    <section class="p-TopHead">
+                        <h1 class="c-title p-TopHead__title">ダミーサイト</h1>
+                    </section>
+                </div>
+                <!-- 
+                    If you want to apply another styling to the "desc" part of eatIn, 
+                    add a modifier to the class name.
+                    eatInの"desc"の部分に別のスタイリングを当てたい場合は、
+                    クラス名にmodifierを追加して対処してください。
+                 -->
+                <div class="l-main__service">
+                    <section class="p-service">
+                        <section class="p-service--takeOut">
+                            <h2 class="c-title p-service__title--takeOut">Take Out</h2>
+                            <section class="p-service__desc">
+                                <h3 class="c-title p-service__desc__title">Take Out</h3>
+                                <p class="u-text--serviceDesc">当店のテイクアウトで利用できる商品を掲載しています</p>
+                            </section>
+                            <section class="p-service__desc">
+                                <h3 class="c-title p-service__desc__title">Take Out</h3>
+                                <p class="u-text--serviceDesc">当店のテイクアウトで利用できる商品を掲載しています</p>
+                            </section>
+                        </section>
+                        <section class="p-service--eatIn">
+                            <h2 class="c-title p-service__title--eatIn">Eat In</h2>
+                            <div class="c-underline p-service__underline--eatIn"></div>
+                            <section class="p-service__desc">
+                                <h3 class="c-title p-service__desc__title--takeOut">Take Out</h3>
+                                <p class="u-text--serviceDesc">当店のテイクアウトで利用できる商品を掲載しています</p>
+                            </section>
+                            <section class="p-service__desc">
+                                <h3 class="c-title p-service__desc__title--takeOut">Take Out</h3>
+                                <p class="u-text--serviceDesc">当店のテイクアウトで利用できる商品を掲載しています</p>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <div class="l-main__access">
+                    <section class="p-access">
+                        <section class="p-access__desc">
+                            <h2 class="c-title p-access__desc__title">見出しが入ります</h2>
+                            <div class="c-underline p-access__desc__underline"></div>
+                            <p class="u-text--accessDesc">
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+                                テキストが入ります。テキストが入ります。テキストが入ります。
+                            </p>
+                        </section>
+                        <div class="c-coverLayer p-access__overlay"></div>
+                        <div class="c-coverLayer p-access__mask"></div>
+                        <div class="p-access__map">
+                            <iframe class="c-mapSource p-access__map__source" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1620.870758267289!2d139.7446631060085!3d35.658739589372935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1637807481136!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            <section class="l-sidebar">
+                <div class="p-sidebar">
+                    <div class="c-coverLayer p-sidebar__mask"></div>
+                    <section class="p-sidebar__content">
+                        <div class="c-closeButton p-sidebar__closeButton"></div>
+                        <section class="p-sidebar__content__nav">
+                            <h4 class="c-title p-sidebar__content__nav__classify">バーガー</h4>
+                            <ul>
+                                <li>ハンバーガー</li>
+                                <li>チーズバーガー</li>
+                                <li>テリヤキバーガー</li>
+                                <li>アボカドバーガー</li>
+                                <li>フィッシュバーガー</li>
+                                <li>ベーコンバーガー</li>
+                                <li>チキンバーガー</li>
+                            </ul>
+                            <h4 class="c-title p-sidebar__content__nav__classify">サイド</h4>
+                            <ul>
+                                <li>ポテト</li>
+                                <li>サラダ</li>
+                                <li>ナゲット</li>
+                                <li>ナゲット</li>
+                                <li>コーン</li>
+                            </ul>
+                            <h4 class="c-title p-sidebar__content__nav__classify">ドリンク</h4>
+                            <ul>
+                                <li>コーラ</li>
+                                <li>ファンタ</li>
+                                <li>オレンジ</li>
+                                <li>アップル</li>
+                                <li>紅茶(Ice/Hot)</li>
+                                <li>コーヒー(Ice/Hot)</li>
+                            </ul>
+                        </section>
+                    </section>
+
+                </div>
+
+            </section>
+            <footer class="l-footer">
+                <div class="p-footer">
+                    <p class="u-text--footerInfo">ショップ情報｜ヒストリー</p>
+                    <p class="u-text--copyright">Copyright: RaiseTech</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

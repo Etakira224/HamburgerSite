@@ -1,0 +1,9 @@
+@use "../../foundation/variables" as v;
+
+.c-searchButton {
+    /* 
+    bassColor
+    (searchButtonは使い回す予定がないのでここでスタイリング) 
+    */
+    @include v.col-searchButton;
+}

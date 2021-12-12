@@ -1,0 +1,330 @@
+@charset "UTF-8";
+/* 
+今回使ってるのは所謂「リセットCSS」。まっさらな状態にしてくれる。 
+中間がノーマライズCSS。割とスタイリングされてるのがサニタイズCSS。
+*/
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /* 使用者追記：ここを100%としておくことで、
+  ユーザー設定のフォントサイズが反映される */
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+/* 
+変数の取り扱いなど、参考記事のリンクを貼っておくと良さそう。
+→万が一「これは何？」となったときに参照してもらえる。
+*/
+/* 
+@use 'foundation/variables' as v;で読むこと
+*/
+/* 
+Responsive
+*/
+/* 
+Font
+_base.scssにて
+font-family: "M+ 1m", Roboto, Arial, Meiryo, sans-serif;
+が設定されている。
+これ以外のフォントや優先順位に従いたくないときに使用する変数を定義
+*/
+/* 
+Size 
+参考:https://zenn.dev/tak_dcxi/articles/26280e7607bcd2
+呼び出し時は
+.my-button {
+    font-size: v.rem(14);　←font-sizeを14px相当に
+}
+…のような形で呼べば、コンパイル後にrem変換してくれる
+*/
+/* 
+About Colors
+https://qiita.com/1natsu172/items/ef6b0fcba6bbe380df1e
+*/
+/* 
+palette  
+新規追加・微調整はここで。
+今回はName that Color(https://chir.ag/projects/name-that-color/)で命名。
+*/
+/* 
+colors
+paletteで定義した色の呼び出し。
+変数名は「"$color" + "-(クラス名)" + "-(backgroundなど(今回backgroundは基本省略))"」を基本とするが、
+「ここの色だけ変えたい」(ex: 背景画像との色被りなど)に対応できるように
+色が同じだったとしても相互に関連の薄い複数個所をまとめて定義しないこと。
+*/
+/* header */
+/* searchButton(gradation)  https://www.webcreatorbox.com/tech/sass-colours#sass-colour5 */
+/* main */
+/* sidebar */
+/* footer */
+/* commonBorder */
+/* 
+backgroundImage
+参考:https://web-guided.com/376/
+*/
+/* 
+タイポ防止。呼び出し時はファイル名.拡張子の記述でOKになる。
+pで当てるのでパス注意。 
+*/
+/* @contentを使うことで、呼出時に他のbackgroundプロパティ追加できる。 */
+* {
+  /* 
+  aboutTexts  
+  Robotoのときは$subFontなどで別途指定(_variables.scss)
+  */
+  font-family: "M+ 1m", Roboto, Arial, Meiryo, sans-serif;
+  /* 
+  borderBoxにして制御しやすく
+  */
+  box-sizing: border-box;
+}
+* h1 {
+  font-size: 2.25rem;
+}
+* h2 {
+  font-size: 2.5625rem;
+}
+* h3 {
+  font-size: 1.375rem;
+}
+
+/* 
+wrapperで全体の調整
+*/
+/*
+右にできた余白を消す
+http://bashalog.c-brains.jp/15/06/26-170500.php
+*/
+.wrapper {
+  overflow: hidden;
+}
+
+.l-main__service {
+  /*
+  左右の余白
+  (ここでvwか…?　いや、スクロールバーのことを考えると%か。) 
+  これにしてみる↓
+  https://www.nxworld.net/sass-number-operations-and-functions.html
+  そのサイズ指定の意味合いを考えて単位を選ぶこと。
+  */
+  padding: 20px 5.3333333333% 49px;
+}
+.c-coverLayer {
+  /* Color */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.c-searchButton {
+  /* 
+  bassColor
+  (searchButtonは使い回す予定がないのでここでスタイリング) 
+  */
+  background: linear-gradient(-90deg, #F2EDE9, #DED8D3) fixed;
+}
+
+/* p-header__menuOpenerも以下のテンプレートを使用している */
+.c-title {
+  /* 
+  letter 
+  ここに詳細まで(font-size等)書くかは
+  まったく同じスタイルで使い回される頻度により判断
+  */
+  font-family: Roboto, "M+ 1m", Arial, Meiryo, sans-serif;
+  font-weight: bold;
+}
+
+.c-underline {
+  /* 
+  初期値=Eat inの下
+  線幅変更箇所あり(Mapテキスト見出しの下)
+  */
+  height: 0.25rem;
+  /* 同箇所にてwidth変更有(Projectにて対応のこと) */
+  width: 2.118125rem;
+  /* color */
+  background-color: #FFF;
+}
+
+/* &__menuOpenerは.c-titleを使用している */
+.p-header {
+  /* Size　*/
+  width: 100%;
+  height: 13.5625rem;
+  /* bassColor */
+  background-color: #FFF7EF;
+}
+.p-header__menuOpener {
+  /* letter */
+  font-size: 1.25rem;
+  /* color */
+  color: #707070;
+  /* aboutText */
+  line-height: 1.625rem;
+}
+.p-header__title {
+  /* letter */
+  font-size: 2.5rem;
+  /* color */
+  color: #707070;
+  /* aboutText */
+  line-height: 3.3125rem;
+}
+.p-TopHead {
+  /* 
+  Size
+  */
+  /* BackGround */
+  background-image: url("../../../images/a-burger-surrounded-by-vegetables.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.p-TopHead__title {
+  /* Color */
+}
+
+.p-service--takeOut {
+  background-image: url("../../../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.p-service--eatIn {
+  background-image: url("../../../images/bacon-burger.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.p-access {
+  /* 
+  aboutPosition
+  (relative指定で子要素をハンドリングしやすく)
+  */
+  position: relative;
+}
+.p-access__desc {
+  /* aboutPosition  (mapの上に重なる形に)*/
+  position: absolute;
+}
+.p-access__desc__title {
+  font-size: 1.875rem;
+}
+.p-access__map {
+  /* 
+  divは初期値でwidth100%なので指定必要なし
+  but iframeタグで挿入したmapのソースを幅変更のこと
+  */
+}
+.p-access__map__source {
+  /* Size
+  ・親のmap(divタグ)のwidthに合わせる
+  */
+  width: 100%;
+}
+
+/* 
+タイトル部以外のテキストについては基本的な点をfoundationでスタイリングし、
+utilityで上書きしていくことにする。
+テキストに関してはcomponentとprojectのカスケーディングを使うと冗長になると考えたため。
+
+For the text, I will style the basic points with foundation 
+and overwrite it with utility. 
+I thought it would be redundant to use component and project cascading.
+*/
+
+/*# sourceMappingURL=style.css.map */

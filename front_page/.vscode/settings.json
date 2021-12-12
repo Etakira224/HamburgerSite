@@ -1,0 +1,5 @@
+{
+    "dartsass.targetDirectory": "css\\",
+    "dartsass.sassBinPath": "node_modules\\sass\\sass.js",
+    "dartsass.disableCompileOnSave": true
+}

@@ -1,0 +1,25 @@
+/* 
+タイトル部以外のテキストについては基本的な点をfoundationでスタイリングし、
+utilityで上書きしていくことにする。
+テキストに関してはcomponentとprojectのカスケーディングを使うと冗長になると考えたため。
+
+For the text, I will style the basic points with foundation 
+and overwrite it with utility. 
+I thought it would be redundant to use component and project cascading.
+*/
+@use "../../foundation/variables" as v;
+
+.u-text {
+    &--serviceDesc {
+
+    }
+    &--accessDesc {
+
+    }
+    &--footerInfo {
+
+    }
+    &--copyright {
+
+    }
+}

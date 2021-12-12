@@ -1,0 +1,15 @@
+@use "../../foundation/variables" as v;
+
+.c-searchBox {
+    /* 
+    Size
+    本来固有の大きさをコンポーネントに持たせることは好ましくないが、
+    使いまわしの予定がないのでここで。 
+    */
+    width: v.rem(230);
+    height: v.rem(46);
+    /* shape 形状が変わらなければpx指定で */
+    border-radius: 10px;
+    /* border 線もおそらく変える必要ないのでpxで */
+    border: solid 1px v.$col-border;
+}

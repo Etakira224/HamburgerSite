@@ -1,0 +1,13 @@
+@use "../../foundation/variables" as v;
+
+.p-TopHead {
+    /* 
+    Size
+    */          
+    /* BackGround */
+    @include v.background-image("a-burger-surrounded-by-vegetables.png");
+    &__title {
+        /* Color */
+        // color: v.$palette-white;
+    }
+}

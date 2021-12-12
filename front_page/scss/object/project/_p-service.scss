@@ -1,0 +1,10 @@
+@use "../../foundation/variables" as v;
+
+.p-service {
+    &--takeOut {
+        @include v.background-image("three-burgers-on-brown-wooden-tray-between-white-ceramic.png")
+    }
+    &--eatIn {
+        @include v.background-image("bacon-burger.png")
+    }   
+}

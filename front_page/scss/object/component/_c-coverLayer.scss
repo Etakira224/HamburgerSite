@@ -1,0 +1,6 @@
+@use "../../foundation/variables" as v;
+
+.c-coverLayer {
+    /* Color */
+    background-color: rgba(v.$palette-black, .5);
+}

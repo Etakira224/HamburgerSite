@@ -1,0 +1,29 @@
+/* &__menuOpenerは.c-titleを使用している */
+@use "../../foundation/variables" as v;
+
+.p-header {
+    /* Size　*/
+    width: 100%;
+    height: v.rem(217);
+    /* bassColor */
+    background-color: v.$col-header;
+    &__menuOpener {
+        /* letter */
+        font-size: v.rem(20);
+        /* color */
+        color: v.$col-header__menuOpener;
+        /* aboutText */
+        line-height: v.rem(26);
+    }
+    &__title {
+        /* letter */
+        font-size: v.rem(40);
+        /* color */
+        color: v.$col-header__title;
+        /* aboutText */
+        line-height: v.rem(53);
+    }
+    &__search {
+
+    }
+}
