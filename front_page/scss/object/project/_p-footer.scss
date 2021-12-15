@@ -1,5 +1,12 @@
 @use "../../foundation/variables" as v;
 
 .p-footer {
-
+    /* bassColor */
+    background-color: v.$col-footer;
+    /* 
+    Size 
+    widthは指定必要なしかな。
+    heightはとりあえずカンプそのままをremで指定しておく
+    */
+    height: v.rem(150);
 }

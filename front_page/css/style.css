@@ -136,6 +136,8 @@ Size
 /* 
 About Colors
 https://qiita.com/1natsu172/items/ef6b0fcba6bbe380df1e
+透過度使うときは以下のように
+background-color: rgba(v.$palette-black, .5);
 */
 /* 
 palette  
@@ -185,6 +187,19 @@ pで当てるのでパス注意。
   font-size: 1.375rem;
 }
 
+/* gridContainer(SP,Tb時はsidebar以外を含む)もこの中で制御。 */
+/* 
+l-wrapperで全体の調整
+*/
+.l-wrapper {
+  /*
+  右にできた余白を消す
+  http://bashalog.c-brains.jp/15/06/26-170500.php
+  */
+  overflow: hidden;
+}
+
+/* PC時はDOM操作の後グリッドで配置 */
 .l-main__service {
   /*
   左右の余白
@@ -236,6 +251,12 @@ pで当てるのでパス注意。
   /* Size　*/
   width: 100%;
   height: 13.5625rem;
+  /*
+  Space 
+  tb時もあまり変わらず(=viewportで変動せず)
+  長い文章が入るとは考えにくいのでpxで指定し固定。
+  */
+  padding: 14px 16px 40px;
   /* bassColor */
   background-color: #FFF7EF;
 }
@@ -259,15 +280,41 @@ pで当てるのでパス注意。
   /* 
   Size
   */
+  height: 17.8125rem;
   /* BackGround */
-  background-image: url("../../../images/a-burger-surrounded-by-vegetables.png");
+  background-image: url("../../../images/a-burger-surrounded-by-vegetables.jpg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  /* 
+  @mixin内で@contentを記述しているため、他のプロパティの追加が可能
+  ここに記述したものは@contentの{}内に書かれていることになる。 
+  */
+  /* 
+  背景縮小
+  background-size: cover;  縦横比保持。覆うように。(大)
+  background-size: contain; 縦横比保持。収まるように。(小)
+  どちらかを値指定。他方をauto(元の比率を維持)とすることもできる。
+  */
+  background-size: cover;
+  /* 
+  左右の余白 (上下は中央寄せで対応かな)
+  →but,予想外に多くの文字が入る可能性やユーザーの文字拡大の可能性も踏まえて
+  上下左右に取っておこうか。
+  その意図なら固定値でいいはずなのでpxで指定　
+  */
+  padding: 25px;
+  /* 上下中央揃え */
+  display: flex;
+  align-items: center;
 }
 .p-TopHead__title {
   /* Color */
+  color: #FFF;
 }
 
+.p-service {
+  /* TB時　横並び */
+}
 .p-service--takeOut {
   background-image: url("../../../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
   background-repeat: no-repeat;
@@ -277,6 +324,36 @@ pで当てるのでパス注意。
   background-image: url("../../../images/bacon-burger.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+.p-service__title--takeOut {
+  /* Color */
+  color: #EAEAEA;
+}
+.p-service__title--eatIn {
+  /* Color */
+  color: #FFF;
+}
+.p-service__desc {
+  /* bassColor */
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.p-service__desc__title {
+  /* 
+  現段階でtakeOutとeatInに差はないが、
+  のちの背景差し替え等による調整をしやすくするために個別に記述
+  なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
+  */
+}
+@media screen and (min-width: 600px) {
+  .p-service {
+    /* 
+    配置
+    flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
+    左右の余白はlayoutで対応済み
+    */
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .p-access {
@@ -291,7 +368,15 @@ pで当てるのでパス注意。
   position: absolute;
 }
 .p-access__desc__title {
+  /* letter */
   font-size: 1.875rem;
+  /* color */
+  color: #FFF;
+}
+.p-access__desc__underline {
+  /* size */
+  width: 4.6875rem;
+  height: 0.125rem;
 }
 .p-access__map {
   /* 
@@ -306,6 +391,43 @@ pで当てるのでパス注意。
   width: 100%;
 }
 
+.p-sidebar {
+  /*
+  position
+   __contentを__maskの上に重ねるために
+   position:relative;. (position多用は危険らしい…？)
+  */
+  position: relative;
+}
+.p-sidebar__mask {
+  /* Size 高さ指定 vhならとりあえず出てきたが*/
+  height: 100vh;
+}
+.p-sidebar__content {
+  /* 
+  position
+  absoluteで__maskの上に重ねる
+  */
+  position: absolute;
+}
+.p-sidebar__content__nav {
+  /* 以下クラス名ついてないので注意 */
+}
+.p-sidebar__content__nav ul li {
+  /* aboutLetters */
+  list-style: none;
+}
+.p-footer {
+  /* bassColor */
+  background-color: #9D8670;
+  /* 
+  Size 
+  widthは指定必要なしかな。
+  heightはとりあえずカンプそのままをremで指定しておく
+  */
+  height: 9.375rem;
+}
+
 /* 
 タイトル部以外のテキストについては基本的な点をfoundationでスタイリングし、
 utilityで上書きしていくことにする。
@@ -315,5 +437,44 @@ For the text, I will style the basic points with foundation
 and overwrite it with utility. 
 I thought it would be redundant to use component and project cascading.
 */
+.u-text {
+  /* 
+  多少面倒だけど、それぞれにスタイリングしていく
+  →背景画像変えるなどで文字見づらくなった時の対応が容易。
+  */
+}
+.u-text--serviceDesc {
+  /* 末尾が--serviceDescのクラスは存在しないため、この領域には記述禁止 */
+}
+.u-text--serviceDesc--takeOut {
+  /* Size */
+  font-size: 1rem;
+  /* Color */
+  color: #3C2A10;
+}
+.u-text--serviceDesc--eatIn {
+  /* Size */
+  font-size: 1rem;
+  /* Color */
+  color: #3C2A10;
+}
+.u-text--accessDesc {
+  /* Size */
+  font-size: 0.875rem;
+  /* Color */
+  color: #FFF;
+}
+.u-text--footerInfo {
+  /* Size */
+  font-size: 1.25rem;
+  /* Color */
+  color: #FFF;
+}
+.u-text--copyright {
+  /* Size */
+  font-size: 0.875rem;
+  /* Color */
+  color: #FFF;
+}
 
 /*# sourceMappingURL=style.css.map */

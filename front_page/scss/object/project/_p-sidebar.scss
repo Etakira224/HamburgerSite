@@ -1,15 +1,32 @@
 @use "../../foundation/variables" as v;
 
 .p-sidebar {
+    /*
+    position
+     __contentを__maskの上に重ねるために
+     position:relative;. (position多用は危険らしい…？)
+    */
+    position: relative;
     &__mask {
-
+        /* Size 高さ指定 vhならとりあえず出てきたが*/
+        height: 100vh;       
     }
     &__content {
-
+        /* 
+        position
+        absoluteで__maskの上に重ねる
+        */
+        position: absolute;
         &__nav {
-
             &__classify {
 
+            }
+            /* 以下クラス名ついてないので注意 */
+            ul {
+                li {
+                    /* aboutLetters */
+                    list-style: none;
+                }
             }
         }
     }

@@ -5,6 +5,12 @@
     /* Size　*/
     width: 100%;
     height: v.rem(217);
+    /*
+    Space 
+    tb時もあまり変わらず(=viewportで変動せず)
+    長い文章が入るとは考えにくいのでpxで指定し固定。
+    */
+    padding: 14px 16px 40px;
     /* bassColor */
     background-color: v.$col-header;
     &__menuOpener {

@@ -6,5 +6,43 @@
     }
     &--eatIn {
         @include v.background-image("bacon-burger.png")
-    }   
+    } 
+    &__title {
+        &--takeOut {
+            /* Color */
+            color: v.$palette-gallery;
+        }
+        &--eatIn {
+            /* Color */
+            color: v.$palette-white;
+        }
+    }
+    &__desc {
+        /* bassColor */
+        background-color: rgba(v.$palette-white, .8);
+        &__title {
+            /* 
+            現段階でtakeOutとeatInに差はないが、
+            のちの背景差し替え等による調整をしやすくするために個別に記述
+            なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
+            */
+            &__takeOut {
+
+            }
+            &__eatIn {
+
+            }
+        }
+    }  
+
+    /* TB時　横並び */
+    @include v.breakpoint(tb) {
+        /* 
+        配置
+        flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
+        左右の余白はlayoutで対応済み
+        */
+        display: flex;
+        justify-content: center;
+    }
 }

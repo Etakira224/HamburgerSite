@@ -10,10 +10,15 @@
         /* aboutPosition  (mapの上に重なる形に)*/
         position: absolute;
         &__title {
+            /* letter */
             font-size: v.rem(30);
+            /* color */
+            color: v.$palette-white;
         }
         &__underline {
-            
+            /* size */
+            width: v.rem(75);
+            height: v.rem(2);
         }
     }
     &__overlay {
