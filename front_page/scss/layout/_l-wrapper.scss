@@ -1,0 +1,25 @@
+@use "../foundation/variables" as v;
+
+
+/* gridContainerもこの中で制御。 */
+/* 
+l-wrapperで全体の調整
+*/
+
+.l-wrapper {
+    /*
+    右にできた余白を消す
+    http://bashalog.c-brains.jp/15/06/26-170500.php
+    */
+    overflow: hidden;
+
+    /* 
+    SP時(初期).子要素l-gridContainerとl-sidebarを
+    flexで横並びに。
+    */
+    display: flex;
+}
+
+/* PC時はDOM操作の後グリッドで配置 */
+
+

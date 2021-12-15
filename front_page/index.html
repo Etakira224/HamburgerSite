@@ -13,7 +13,7 @@
     <script src="js\script.js"></script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="l-wrapper">
         <div class="gridContainer">
             <header class="l-header">
                 <div class="p-header">
@@ -91,45 +91,6 @@
                     </section>
                 </div>
             </main>
-            <section class="l-sidebar">
-                <div class="p-sidebar">
-                    <div class="c-coverLayer p-sidebar__mask"></div>
-                    <section class="p-sidebar__content">
-                        <div class="c-closeButton p-sidebar__closeButton"></div>
-                        <section class="p-sidebar__content__nav">
-                            <h4 class="c-title p-sidebar__content__nav__classify">バーガー</h4>
-                            <ul>
-                                <li>ハンバーガー</li>
-                                <li>チーズバーガー</li>
-                                <li>テリヤキバーガー</li>
-                                <li>アボカドバーガー</li>
-                                <li>フィッシュバーガー</li>
-                                <li>ベーコンバーガー</li>
-                                <li>チキンバーガー</li>
-                            </ul>
-                            <h4 class="c-title p-sidebar__content__nav__classify">サイド</h4>
-                            <ul>
-                                <li>ポテト</li>
-                                <li>サラダ</li>
-                                <li>ナゲット</li>
-                                <li>ナゲット</li>
-                                <li>コーン</li>
-                            </ul>
-                            <h4 class="c-title p-sidebar__content__nav__classify">ドリンク</h4>
-                            <ul>
-                                <li>コーラ</li>
-                                <li>ファンタ</li>
-                                <li>オレンジ</li>
-                                <li>アップル</li>
-                                <li>紅茶(Ice/Hot)</li>
-                                <li>コーヒー(Ice/Hot)</li>
-                            </ul>
-                        </section>
-                    </section>
-
-                </div>
-
-            </section>
             <footer class="l-footer">
                 <div class="p-footer">
                     <p class="u-text--footerInfo">ショップ情報｜ヒストリー</p>
@@ -137,6 +98,46 @@
                 </div>
             </footer>
         </div>
+        <!-- l-sidebarはPC時JSで制御しgridcontainer内に格納のこと -->
+        <section class="l-sidebar">
+            <div class="p-sidebar">
+                <div class="c-coverLayer p-sidebar__mask"></div>
+                <section class="p-sidebar__content">
+                    <div class="c-closeButton p-sidebar__closeButton"></div>
+                    <section class="p-sidebar__content__nav">
+                        <h4 class="c-title p-sidebar__content__nav__classify">バーガー</h4>
+                        <ul>
+                            <li>ハンバーガー</li>
+                            <li>チーズバーガー</li>
+                            <li>テリヤキバーガー</li>
+                            <li>アボカドバーガー</li>
+                            <li>フィッシュバーガー</li>
+                            <li>ベーコンバーガー</li>
+                            <li>チキンバーガー</li>
+                        </ul>
+                        <h4 class="c-title p-sidebar__content__nav__classify">サイド</h4>
+                        <ul>
+                            <li>ポテト</li>
+                            <li>サラダ</li>
+                            <li>ナゲット</li>
+                            <li>ナゲット</li>
+                            <li>コーン</li>
+                        </ul>
+                        <h4 class="c-title p-sidebar__content__nav__classify">ドリンク</h4>
+                        <ul>
+                            <li>コーラ</li>
+                            <li>ファンタ</li>
+                            <li>オレンジ</li>
+                            <li>アップル</li>
+                            <li>紅茶(Ice/Hot)</li>
+                            <li>コーヒー(Ice/Hot)</li>
+                        </ul>
+                    </section>
+                </section>
+
+            </div>
+
+        </section>
     </div>
 </body>
 </html>
