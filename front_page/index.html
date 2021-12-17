@@ -17,12 +17,12 @@
         <div class="gridContainer">
             <header class="l-header">
                 <div class="p-header">
-                    <p class="c-title p-header__menuOpener">Menu</p>   
+                    <p class="c-title p-header__menuOpener js-button">Menu</p>   
                     <p class="c-title p-header__title">Hamburger</p>
                     <section class="p-header__search">
-                        <i class="fas fa-search"></i>
-                        <input class="c-searchBox" type="text">
-                        <button class="c-searchButton">検索</button>
+                        <i class="fas fa-search c-searchIcon p-header__search__searchIcon"></i>
+                        <input class="c-searchBox p-header__search__searchBox" type="text">
+                        <button class="c-searchButton p-header__search__searchButton">検索</button>
                     </section>
                 </div>
             </header>
@@ -101,7 +101,7 @@
             </footer>
         </div>
         <!-- l-sidebarはPC時JSで制御しgridcontainer内に格納のこと -->
-        <section class="l-sidebar">
+        <section class="l-sidebar js-menu">
             <div class="p-sidebar">
                 <div class="c-coverLayer p-sidebar__mask"></div>
                 <section class="p-sidebar__content">

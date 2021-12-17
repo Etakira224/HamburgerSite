@@ -7,8 +7,9 @@
     */
     position: relative;
     &__desc {
-        /* aboutPosition  (mapの上に重なる形に)*/
+        /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
         position: absolute;
+        z-index: 100;
         &__title {
             /* letter */
             font-size: v.rem(30);
@@ -22,10 +23,22 @@
         }
     }
     &__overlay {
-
+        /* 濃い黒 */
+        opacity: .29;
+        /* size 幅は親(p-access)に合わせ、高さはカンプに基づいて%指定 */
+        width: 100%;
+        height: percentage(415/691);
+        /* layout absoluteで重ねる */
+        position: absolute;
     }
     &__mask {
-
+        /* 薄い黒(カンプは白指定だが、不透明度を反転(?)させて黒指定) */
+        opacity: .4;
+        /* size */
+        width: 100%;
+        height: 100%;
+        /* layout absoluteで重ねる */
+        position: absolute;
     }
     &__map {
         /* 

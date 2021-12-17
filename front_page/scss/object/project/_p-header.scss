@@ -8,10 +8,10 @@
     /*
     Space 
     tb時もあまり変わらず(=viewportで変動せず)
-    長い文章が入るとは考えにくいのでpxで指定し固定。
+    長い文章が入るとは考えにくい(?)のでpxで指定し固定。
     */
     padding: 14px 16px 40px;
-    /* bassColor */
+    /* baseColor */
     background-color: v.$col-header;
     &__menuOpener {
         /* letter */
@@ -20,6 +20,11 @@
         color: v.$col-header__menuOpener;
         /* aboutText */
         line-height: v.rem(26);
+        /* 選択できなくする */
+        user-select: none;
+        /* layout (flex使って右上端に) */
+        display: flex;
+        justify-content: flex-end;
     }
     &__title {
         /* letter */
@@ -28,8 +33,29 @@
         color: v.$col-header__title;
         /* aboutText */
         line-height: v.rem(53);
+        /* layout(左右中央ぞろえ) */
+        display: flex;
+        justify-content: center;
     }
     &__search {
+        /* layout(左右中央ぞろえ) */
+        display: flex;
+        justify-content: center;
+        &__searchIcon {
 
+        }
+        &__searchBox {
+            /* 
+            Size 
+            */
+            width: v.rem(230);
+            height: v.rem(46);
+            /* 形状を決定するborderRadiusはコンポーネントで指定してある */
+            /* border 線もおそらく変える必要ないのでpxで */
+            border: solid 1px v.$col-border;
+        }
+        &__searchButton {
+
+        }
     }
 }

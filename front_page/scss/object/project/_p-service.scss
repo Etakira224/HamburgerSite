@@ -1,10 +1,21 @@
 @use "../../foundation/variables" as v;
 
 .p-service {
+    /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
     &--takeOut {
+        /* 
+        Size 
+        iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
+        */
+        min-height: 550px;
         @include v.background-image("three-burgers-on-brown-wooden-tray-between-white-ceramic.png")
     }
     &--eatIn {
+        /* 
+        Size 
+        iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
+        */
+        min-height: 550px;
         @include v.background-image("bacon-burger.png")
     } 
     &__title {
@@ -18,12 +29,14 @@
         }
     }
     &__desc {
-        /* bassColor */
-        background-color: rgba(v.$palette-white, .8);
+        /* baseColor */
+        background-color: v.$palette-white;
+        /* opacity */
+        opacity: .8;
         &__title {
             /* 
             現段階でtakeOutとeatInに差はないが、
-            のちの背景差し替え等による調整をしやすくするために個別に記述
+            のちの背景差し替え等に伴う調整をしやすくするために個別に記述
             なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
             */
             &__takeOut {

@@ -1,5 +1,18 @@
 @use "../foundation/variables" as v;
 
 .l-sidebar {
+    /* 
+    js-menu(sidebar)のサイズはここでまとめて行う
+    ここをlとpにわけるとjsでの操作が面倒になると考えたため。
+    */
+    /* 最初はoverflow-x: hidden;にして消しておく */
+    overflow-x: hidden;
+    /* layout 浮かせて手前に固定。topを0に指定することでドキュメントの左上に */
+    position: fixed;
+    top: 0;
     
+    /* is-open時 */
+    &.is-open {
+        width: 100%;
+    }
 }

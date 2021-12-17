@@ -7,16 +7,40 @@
      position:relative;. (position多用は危険らしい…？)
     */
     position: relative;
+    /* 
+    Size(子はこれを100%指定で受け継ぐ)
+    基本的にl-sidebarで制御してるが、
+    高さはここ依存しているので消さないでね。
+    */
+    height: 100vh;
+    /* flex-endでcontentを右に。__maskの幅消えるので指定のこと */
+    display: flex;
+    justify-content: flex-end;
     &__mask {
-        /* Size 高さ指定 vhならとりあえず出てきたが*/
-        height: 100vh;       
+        /* baseColor アルファ値使う(50%)ので、rgbaで再度指定 */
+        background-color: rgba(v.$col-sidebar__mask, .5);
+        /* Size 高さ指定 親に合わせる*/
+        height: 100%;   
+        /* 親にflexかけたら幅消えたので指定 */ 
+        width: 100%;   
     }
     &__content {
         /* 
         position
-        absoluteで__maskの上に重ねる
+        absoluteで浮かせる。
+        top:0;でrelative付きの親の左上へ。__maskと重なる。
         */
         position: absolute;
+        top: 0;
+        /* 
+        Size 
+        幅指定 percentageで(余白も%指定の必要が出てくる)
+        高さ指定 親に合わせる
+        */
+        width: percentage(328/375);
+        height: 100%;
+        /* baseColor */
+        background-color: v.$col-sidebar;
         &__nav {
             &__classify {
 

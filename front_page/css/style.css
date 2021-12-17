@@ -210,11 +210,41 @@ l-wrapperで全体の調整
   */
   padding: 20px 5.3333333333% 49px;
 }
-.c-coverLayer {
-  /* Color */
-  background-color: rgba(0, 0, 0, 0.5);
+.l-sidebar {
+  /* 
+  js-menu(sidebar)のサイズはここでまとめて行う
+  ここをlとpにわけるとjsでの操作が面倒になると考えたため。
+  */
+  /* 最初はoverflow-x: hidden;にして消しておく */
+  overflow-x: hidden;
+  /* layout 浮かせて手前に固定。topを0に指定することでドキュメントの左上に */
+  position: fixed;
+  top: 0;
+  /* is-open時 */
+}
+.l-sidebar.is-open {
+  width: 100%;
 }
 
+.c-coverLayer {
+  /* Color アルファ値使う場合はprojectで再度指定のこと。*/
+  background-color: #000;
+}
+
+/* 
+根本的なデザインの変更以外はここで指定せず、projectで指定すること。
+*/
+/* 
+根本的なデザインの変更以外はここで指定せず、projectで指定すること。
+*/
+.c-searchBox {
+  /* shape */
+  border-radius: 10px;
+}
+
+/* 
+根本的なデザインの変更以外はここで指定せず、projectで指定すること。
+*/
 .c-searchButton {
   /* 
   bassColor
@@ -246,6 +276,10 @@ l-wrapperで全体の調整
   background-color: #FFF;
 }
 
+/* 
+基本は記述なし。
+幅の変更などはp-access__map__sourceで行うため。 
+*/
 /* &__menuOpenerは.c-titleを使用している */
 .p-header {
   /* Size　*/
@@ -254,10 +288,10 @@ l-wrapperで全体の調整
   /*
   Space 
   tb時もあまり変わらず(=viewportで変動せず)
-  長い文章が入るとは考えにくいのでpxで指定し固定。
+  長い文章が入るとは考えにくい(?)のでpxで指定し固定。
   */
   padding: 14px 16px 40px;
-  /* bassColor */
+  /* baseColor */
   background-color: #FFF7EF;
 }
 .p-header__menuOpener {
@@ -267,6 +301,11 @@ l-wrapperで全体の調整
   color: #707070;
   /* aboutText */
   line-height: 1.625rem;
+  /* 選択できなくする */
+  user-select: none;
+  /* layout (flex使って右上端に) */
+  display: flex;
+  justify-content: flex-end;
 }
 .p-header__title {
   /* letter */
@@ -275,6 +314,24 @@ l-wrapperで全体の調整
   color: #707070;
   /* aboutText */
   line-height: 3.3125rem;
+  /* layout(左右中央ぞろえ) */
+  display: flex;
+  justify-content: center;
+}
+.p-header__search {
+  /* layout(左右中央ぞろえ) */
+  display: flex;
+  justify-content: center;
+}
+.p-header__search__searchBox {
+  /* 
+  Size 
+  */
+  width: 14.375rem;
+  height: 2.875rem;
+  /* 形状を決定するborderRadiusはコンポーネントで指定してある */
+  /* border 線もおそらく変える必要ないのでpxで */
+  border: solid 1px #707070;
 }
 .p-TopHead {
   /* 
@@ -313,14 +370,25 @@ l-wrapperで全体の調整
 }
 
 .p-service {
+  /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
   /* TB時　横並び */
 }
 .p-service--takeOut {
+  /* 
+  Size 
+  iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
+  */
+  min-height: 550px;
   background-image: url("../../../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
 .p-service--eatIn {
+  /* 
+  Size 
+  iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
+  */
+  min-height: 550px;
   background-image: url("../../../images/bacon-burger.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -334,13 +402,15 @@ l-wrapperで全体の調整
   color: #FFF;
 }
 .p-service__desc {
-  /* bassColor */
-  background-color: rgba(255, 255, 255, 0.8);
+  /* baseColor */
+  background-color: #FFF;
+  /* opacity */
+  opacity: 0.8;
 }
 .p-service__desc__title {
   /* 
   現段階でtakeOutとeatInに差はないが、
-  のちの背景差し替え等による調整をしやすくするために個別に記述
+  のちの背景差し替え等に伴う調整をしやすくするために個別に記述
   なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
   */
 }
@@ -364,8 +434,9 @@ l-wrapperで全体の調整
   position: relative;
 }
 .p-access__desc {
-  /* aboutPosition  (mapの上に重なる形に)*/
+  /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
   position: absolute;
+  z-index: 100;
 }
 .p-access__desc__title {
   /* letter */
@@ -377,6 +448,24 @@ l-wrapperで全体の調整
   /* size */
   width: 4.6875rem;
   height: 0.125rem;
+}
+.p-access__overlay {
+  /* 濃い黒 */
+  opacity: 0.29;
+  /* size 幅は親(p-access)に合わせ、高さはカンプに基づいて%指定 */
+  width: 100%;
+  height: 60.0578871201%;
+  /* layout absoluteで重ねる */
+  position: absolute;
+}
+.p-access__mask {
+  /* 薄い黒(カンプは白指定だが、不透明度を反転(?)させて黒指定) */
+  opacity: 0.4;
+  /* size */
+  width: 100%;
+  height: 100%;
+  /* layout absoluteで重ねる */
+  position: absolute;
 }
 .p-access__map {
   /* 
@@ -398,17 +487,41 @@ l-wrapperで全体の調整
    position:relative;. (position多用は危険らしい…？)
   */
   position: relative;
+  /* 
+  Size(子はこれを100%指定で受け継ぐ)
+  基本的にl-sidebarで制御してるが、
+  高さはここ依存しているので消さないでね。
+  */
+  height: 100vh;
+  /* flex-endでcontentを右に。__maskの幅消えるので指定のこと */
+  display: flex;
+  justify-content: flex-end;
 }
 .p-sidebar__mask {
-  /* Size 高さ指定 vhならとりあえず出てきたが*/
-  height: 100vh;
+  /* baseColor アルファ値使う(50%)ので、rgbaで再度指定 */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Size 高さ指定 親に合わせる*/
+  height: 100%;
+  /* 親にflexかけたら幅消えたので指定 */
+  width: 100%;
 }
 .p-sidebar__content {
   /* 
   position
-  absoluteで__maskの上に重ねる
+  absoluteで浮かせる。
+  top:0;でrelative付きの親の左上へ。__maskと重なる。
   */
   position: absolute;
+  top: 0;
+  /* 
+  Size 
+  幅指定 percentageで(余白も%指定の必要が出てくる)
+  高さ指定 親に合わせる
+  */
+  width: 87.4666666667%;
+  height: 100%;
+  /* baseColor */
+  background-color: #F2EDE9;
 }
 .p-sidebar__content__nav {
   /* 以下クラス名ついてないので注意 */
@@ -418,7 +531,7 @@ l-wrapperで全体の調整
   list-style: none;
 }
 .p-footer {
-  /* bassColor */
+  /* baseColor */
   background-color: #9D8670;
   /* 
   Size 
@@ -426,6 +539,10 @@ l-wrapperで全体の調整
   heightはとりあえずカンプそのままをremで指定しておく
   */
   height: 9.375rem;
+  /* layout 中央揃え*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 
