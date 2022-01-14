@@ -10,6 +10,8 @@
     /* layout 浮かせて手前に固定。topを0に指定することでドキュメントの左上に */
     position: fixed;
     top: 0;
+    /* アニメーション　元要素で指定　なぜか効かない */
+    // transition: .5s;
     
     /* is-open時 */
     &.is-open {

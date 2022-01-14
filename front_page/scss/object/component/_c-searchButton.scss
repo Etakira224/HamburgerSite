@@ -8,4 +8,11 @@
     (searchButtonは使い回す予定がないのでここでスタイリング) 
     */
     @include v.col-searchButton;
+    /* shape */
+    border-radius: 10px;
+    /* size */
+    width: v.rem(78);
+    /* 改行禁止 */
+    white-space: nowrap;
 }
+

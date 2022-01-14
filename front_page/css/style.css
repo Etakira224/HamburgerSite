@@ -220,10 +220,42 @@ l-wrapperで全体の調整
   /* layout 浮かせて手前に固定。topを0に指定することでドキュメントの左上に */
   position: fixed;
   top: 0;
+  /* アニメーション　元要素で指定　なぜか効かない */
   /* is-open時 */
 }
 .l-sidebar.is-open {
   width: 100%;
+}
+
+/* 
+恐らく十分に見えやすい大きさだと思われるのでpxで指定。
+後で実験してみる。 
+*/
+.c-closeButton {
+  /* 疑似要素出現させる */
+  display: flex;
+  /* テキストを消す */
+  font-size: 0;
+  /* 三平方 */
+  width: 45.2544px;
+  /* 高さ＝厚み */
+  height: 6px;
+  /* color */
+  background-color: #707070;
+  /* angle */
+  transform: rotate(45deg);
+  /* cursor変化 */
+  cursor: pointer;
+}
+.c-closeButton::before {
+  content: "";
+  /* 同一の内容を指定し、角度だけ変えてあげる */
+  font-size: 0;
+  width: 45.2544px;
+  height: 6px;
+  background-color: #707070;
+  /* angle */
+  transform: rotate(90deg);
 }
 
 .c-coverLayer {
@@ -251,6 +283,12 @@ l-wrapperで全体の調整
   (searchButtonは使い回す予定がないのでここでスタイリング) 
   */
   background: linear-gradient(-90deg, #F2EDE9, #DED8D3) fixed;
+  /* shape */
+  border-radius: 10px;
+  /* size */
+  width: 4.875rem;
+  /* 改行禁止 */
+  white-space: nowrap;
 }
 
 /* p-header__menuOpenerも以下のテンプレートを使用している */
@@ -301,8 +339,9 @@ l-wrapperで全体の調整
   color: #707070;
   /* aboutText */
   line-height: 1.625rem;
-  /* 選択できなくする */
+  /* 選択できなくする cursorはpointerに*/
   user-select: none;
+  cursor: pointer;
   /* layout (flex使って右上端に) */
   display: flex;
   justify-content: flex-end;
@@ -382,6 +421,10 @@ l-wrapperで全体の調整
   background-image: url("../../../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  /* flexで並べる */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .p-service--eatIn {
   /* 
@@ -392,6 +435,10 @@ l-wrapperで全体の調整
   background-image: url("../../../images/bacon-burger.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  /* flexで並べる */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .p-service__title--takeOut {
   /* Color */
@@ -401,13 +448,13 @@ l-wrapperで全体の調整
   /* Color */
   color: #FFF;
 }
-.p-service__desc {
+.p-service__detail__desc {
   /* baseColor */
   background-color: #FFF;
   /* opacity */
   opacity: 0.8;
 }
-.p-service__desc__title {
+.p-service__detail__desc__title {
   /* 
   現段階でtakeOutとeatInに差はないが、
   のちの背景差し替え等に伴う調整をしやすくするために個別に記述
@@ -480,6 +527,10 @@ l-wrapperで全体の調整
   width: 100%;
 }
 
+/* 
+_nav以下については末尾で別途記載。ネストの深化を防ぐため。
+レスポンシブ対応してもあまりスタイルが変わらないからこそできることかな??
+*/
 .p-sidebar {
   /*
   position
@@ -522,14 +573,47 @@ l-wrapperで全体の調整
   height: 100%;
   /* baseColor */
   background-color: #F2EDE9;
+  /* 
+  space 
+  相対値で指定すると文字大きくなると表示領域狭くなるということが生じるので、pxで。
+  傾けた要素は元の状態に座標があるので注意。
+  下も暫定で上と同じ値をつけておく 
+  */
+  padding: 50px 17px 25px 47px;
+  /* layout (navとcloseButtonをflexで配置) */
+  display: flex;
+  justify-content: space-between;
+  /* 
+  &__nav以下については視認性を高めるため下で別途スタイリング。
+  */
 }
+/* 
+sidebarのcontent__nav以下のスタイリングはここで
+*/
 .p-sidebar__content__nav {
   /* 以下クラス名ついてないので注意 */
+}
+.p-sidebar__content__nav__classify {
+  /* aboutLetter */
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .p-sidebar__content__nav ul li {
   /* aboutLetters */
   list-style: none;
 }
+.p-sidebar__content__nav ul li a {
+  /* aboutLetter */
+  font-size: 1.25rem;
+  text-decoration: none;
+  /* color  inheritとすることで青→テーマデフォルト色 */
+  color: inherit;
+}
+.p-sidebar__content__nav ul li a:hover {
+  /* hover */
+  opacity: 0.6;
+}
+
 .p-footer {
   /* baseColor */
   background-color: #9D8670;

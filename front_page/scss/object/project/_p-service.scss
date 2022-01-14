@@ -8,7 +8,11 @@
         iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
         */
         min-height: 550px;
-        @include v.background-image("three-burgers-on-brown-wooden-tray-between-white-ceramic.png")
+        @include v.background-image("three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
+        /* flexで並べる */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     &--eatIn {
         /* 
@@ -16,7 +20,11 @@
         iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
         */
         min-height: 550px;
-        @include v.background-image("bacon-burger.png")
+        @include v.background-image("bacon-burger.png");
+        /* flexで並べる */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     } 
     &__title {
         &--takeOut {
@@ -28,25 +36,28 @@
             color: v.$palette-white;
         }
     }
-    &__desc {
-        /* baseColor */
-        background-color: v.$palette-white;
-        /* opacity */
-        opacity: .8;
-        &__title {
-            /* 
-            現段階でtakeOutとeatInに差はないが、
-            のちの背景差し替え等に伴う調整をしやすくするために個別に記述
-            なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
-            */
-            &__takeOut {
-
+    &__detail {
+        &__desc {
+            /* baseColor */
+            background-color: v.$palette-white;
+            /* opacity */
+            opacity: .8;
+            &__title {
+                /* 
+                現段階でtakeOutとeatInに差はないが、
+                のちの背景差し替え等に伴う調整をしやすくするために個別に記述
+                なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
+                */
+                &__takeOut {
+    
+                }
+                &__eatIn {
+    
+                }
             }
-            &__eatIn {
+        }  
+    }
 
-            }
-        }
-    }  
 
     /* TB時　横並び */
     @include v.breakpoint(tb) {
@@ -59,3 +70,5 @@
         justify-content: center;
     }
 }
+
+

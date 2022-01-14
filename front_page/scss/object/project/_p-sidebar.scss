@@ -1,5 +1,9 @@
 @use "../../foundation/variables" as v;
 
+/* 
+_nav以下については末尾で別途記載。ネストの深化を防ぐため。
+レスポンシブ対応してもあまりスタイルが変わらないからこそできることかな??
+*/
 .p-sidebar {
     /*
     position
@@ -41,21 +45,53 @@
         height: 100%;
         /* baseColor */
         background-color: v.$col-sidebar;
-        &__nav {
-            &__classify {
+        /* 
+        space 
+        相対値で指定すると文字大きくなると表示領域狭くなるということが生じるので、pxで。
+        傾けた要素は元の状態に座標があるので注意。
+        下も暫定で上と同じ値をつけておく 
+        */
+        padding: 50px 17px 25px 47px;
+        /* layout (navとcloseButtonをflexで配置) */
+        display: flex;
+        justify-content: space-between;
+        
+        /* 
+        &__nav以下については視認性を高めるため下で別途スタイリング。
+        */
 
-            }
-            /* 以下クラス名ついてないので注意 */
-            ul {
-                li {
-                    /* aboutLetters */
-                    list-style: none;
+        &__closeButton {
+    
+        }
+    }
+
+}
+
+/* 
+sidebarのcontent__nav以下のスタイリングはここで
+*/
+.p-sidebar__content__nav {
+    &__classify {
+        /* aboutLetter */
+        font-size: v.rem(24);
+        font-weight: bold;
+    }
+    /* 以下クラス名ついてないので注意 */
+    ul {
+        li {
+            /* aboutLetters */
+            list-style: none;
+            a {
+                /* aboutLetter */
+                font-size: v.rem(20);
+                text-decoration: none;
+                /* color  inheritとすることで青→テーマデフォルト色 */
+                color: inherit;
+                &:hover {
+                    /* hover */
+                    opacity: .6;
                 }
             }
         }
     }
-    &__closeButton {
-
-    }
-
 }

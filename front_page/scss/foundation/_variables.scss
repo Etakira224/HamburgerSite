@@ -63,6 +63,7 @@ $palette-arrowtown : #9D8670;
 $palette-pampas : #F2EDE9;
 $palette-gallery : #EAEAEA;
 $palette-brownTumbleweed : #3C2A10;
+$palette-gray : #808080;
 $palette-white : #FFF;
 $palette-black : #000;
 /* 
@@ -81,6 +82,7 @@ $col-searchBox-background: $palette-white;
 @mixin col-searchButton($angle: -90deg, $gradStart: #{$palette-pampas}, $gradEnd: #{$palette-wester}) {
     background: linear-gradient($angle, $gradStart, $gradEnd) fixed;
 }
+$col-header__searchIcon: $palette-gray;
 /* main */
 $col-main: $palette-romance;
 /* sidebar */
