@@ -10,16 +10,22 @@
         /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
         position: absolute;
         z-index: 100;
+        /* space */
+        padding: 42px 40px 51px;
         &__title {
             /* letter */
             font-size: v.rem(30);
             /* color */
             color: v.$palette-white;
-        }
-        &__underline {
-            /* size */
-            width: v.rem(75);
-            height: v.rem(2);
+            /* 疑似要素を下に */
+            display: flex;
+            flex-direction: column;
+            /* underLine */
+            &::after {
+                @include v.underLine;
+                width: v.rem(75);
+                height: v.rem(2);
+            }
         }
     }
     &__overlay {

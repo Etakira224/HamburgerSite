@@ -1,0 +1,55 @@
+@use "../../foundation/variables" as v;
+
+.p-header__title {
+    margin-bottom: 38px;
+}
+
+.p-header__search__searchBox {
+    margin-right: 12px;
+}
+
+.p-service__content__title::after {
+    margin-top: 19.3px;
+}
+
+/* service */
+.p-service__content:not(:last-child) {
+    margin-bottom: 20px;
+    /* 横並び後はbottomではなくrightに */
+    @include v.breakpoint(tb) {
+        margin-bottom: 0;
+        margin-right: 41px;
+    }
+}
+
+.p-service__content__detail__desc:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.p-service__content__detail__desc__title {
+    margin-bottom: 20px;
+}
+
+.p-access__desc__title::after {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.p-sidebar__content__nav {
+    &__classify {
+        margin-left: 46px;
+        margin-bottom: v.rem(40);
+    }
+    ul {
+        margin-left: 66px;
+        li:not(:last-child) {
+            margin-bottom: v.rem(22);
+        }
+    }
+}
+
+.u-text--footerInfo {
+    margin-bottom: 34px;
+}
+
+

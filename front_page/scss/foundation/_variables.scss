@@ -109,6 +109,15 @@ $imgPath: "../../../images/";
     background-image: url($imgPath + $fileName);
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    background-size: cover;
     @content;
 }
 
+/* 後から追加 */
+/* underline   eatInの下を基準に。疑似要素afterで指定のこと*/
+@mixin underLine {
+    content: "";
+    height: rem(4);
+    width: rem(33.89);
+    background-color: $palette-white;
+}

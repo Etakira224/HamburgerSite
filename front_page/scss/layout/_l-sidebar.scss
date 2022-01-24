@@ -7,11 +7,18 @@
     */
     /* 最初はoverflow-x: hidden;にして消しておく */
     overflow-x: hidden;
-    /* layout 浮かせて手前に固定。topを0に指定することでドキュメントの左上に */
+    /* 
+    layout 
+    浮かせて手前に固定。topを0に指定することでドキュメントの左上に
+    さらにp-access__dexcにz-indexを指定しているので
+    そのままだとdescのみ手前に表示されてしまう
+    そのためここでz-index(descより大きな値)を指定しておく 
+    */
     position: fixed;
     top: 0;
-    /* アニメーション　元要素で指定　なぜか効かない */
-    // transition: .5s;
+    z-index: 1000;
+    /* アニメーション 元要素で指定 なぜか効かない */
+    transition: .5s;
     
     /* is-open時 */
     &.is-open {

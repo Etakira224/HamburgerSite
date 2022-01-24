@@ -1,0 +1,27 @@
+@use "../../foundation/variables" as v;
+
+.u-service__content {
+    &--takeOut {
+        @include v.background-image("three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
+    }
+    &--eatIn {
+        @include v.background-image("bacon-burger.png");
+    }
+    &__title {
+        &--takeOut {
+            /* Color */
+            color: v.$palette-gallery;
+        }
+        &--eatIn {
+            /* Color */
+            color: v.$palette-white;
+            /* 疑似要素を下に */
+            display: flex;
+            flex-direction: column;
+            /* UnderLine */
+            &::after {
+                @include v.underLine;
+            }
+        }
+    }
+}

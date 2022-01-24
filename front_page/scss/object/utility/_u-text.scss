@@ -18,12 +18,16 @@ I thought it would be redundant to use component and project cascading.
     &--serviceDesc {
         /* 末尾が--serviceDescのクラスは存在しないため、この領域には記述禁止 */
         &--takeOut {
+            /* minHeight */
+            min-height: v.rem(72);
             /* Size */
             font-size: v.rem(16);
             /* Color */
             color: v.$palette-brownTumbleweed;
         }
         &--eatIn {
+            /* minHeight */
+            min-height: v.rem(72);
             /* Size */
             font-size: v.rem(16);
             /* Color */
