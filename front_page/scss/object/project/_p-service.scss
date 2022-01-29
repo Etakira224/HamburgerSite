@@ -2,62 +2,56 @@
 
 .p-service {
     /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
-    &--takeOut {
+    /* space */
+    padding: 10/335%;
+    &__content {
         /* 
         Size 
         iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
         */
         min-height: 550px;
-        @include v.background-image("three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
         /* flexで並べる */
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-    }
-    &--eatIn {
         /* 
-        Size 
-        iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
+        space
         */
-        min-height: 550px;
-        @include v.background-image("bacon-burger.png");
-        /* flexで並べる */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    } 
-    &__title {
-        &--takeOut {
-            /* Color */
-            color: v.$palette-gallery;
-        }
-        &--eatIn {
-            /* Color */
-            color: v.$palette-white;
+        padding: 11px;
+        /* 
+        TakeOut,EatInの書き分け必要がある部分はutility(_u-service.scss)にて
+        */
+        /*
+        &__title {
+        } 
+        */
+        &__detail {
+            &__desc {
+                /* baseColor */
+                background-color: v.$palette-white;
+                /* opacity */
+                opacity: .8;
+                /* space 予期しない操作による崩れを防ぐためショートハンドは使わず記述 */
+                padding-top: 19px;
+                padding-left: 10px;
+                padding-bottom: 20px;
+                padding-right: 14px;
+                &__title {
+                    /* 
+                    現段階でtakeOutとeatInに差はないが、
+                    のちの背景差し替え等に伴う調整をしやすくするために個別に記述
+                    なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
+                    */
+                    &__takeOut {
+        
+                    }
+                    &__eatIn {
+        
+                    }
+                }
+            }  
         }
     }
-    &__detail {
-        &__desc {
-            /* baseColor */
-            background-color: v.$palette-white;
-            /* opacity */
-            opacity: .8;
-            &__title {
-                /* 
-                現段階でtakeOutとeatInに差はないが、
-                のちの背景差し替え等に伴う調整をしやすくするために個別に記述
-                なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
-                */
-                &__takeOut {
-    
-                }
-                &__eatIn {
-    
-                }
-            }
-        }  
-    }
-
 
     /* TB時　横並び */
     @include v.breakpoint(tb) {

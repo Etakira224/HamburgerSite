@@ -23,9 +23,15 @@
         /* 選択できなくする cursorはpointerに*/
         user-select: none;
         cursor: pointer;
-        /* layout (flex使って右上端に) */
-        display: flex;
-        justify-content: flex-end;
+        /* 
+        layout
+        block要素、幅をコンテンツサイズに、右寄せ。
+        width: fit-contentはIE対応していないため注意。
+        marginは基本的にutilityで制御しているが、今回はlayout的意味合いが強いためここで。
+        */
+        display: block;
+        width: fit-content;
+        margin-left: auto;
     }
     &__title {
         /* letter */

@@ -10,9 +10,13 @@
     @include v.col-searchButton;
     /* shape */
     border-radius: 10px;
+    border: 1px solid v.$palette-doveGray;
     /* size */
     width: v.rem(78);
     /* 改行禁止 */
     white-space: nowrap;
+    /* text */
+    font-weight: bold;
+    color: v.$palette-doveGray;
 }
 

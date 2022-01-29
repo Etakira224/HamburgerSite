@@ -166,6 +166,8 @@ backgroundImage
 pで当てるのでパス注意。 
 */
 /* @contentを使うことで、呼出時に他のbackgroundプロパティ追加できる。 */
+/* 後から追加 */
+/* underline   eatInの下を基準に。疑似要素afterで指定のこと*/
 * {
   /* 
   aboutTexts  
@@ -217,10 +219,18 @@ l-wrapperで全体の調整
   */
   /* 最初はoverflow-x: hidden;にして消しておく */
   overflow-x: hidden;
-  /* layout 浮かせて手前に固定。topを0に指定することでドキュメントの左上に */
+  /* 
+  layout 
+  浮かせて手前に固定。topを0に指定することでドキュメントの左上に
+  さらにp-access__dexcにz-indexを指定しているので
+  そのままだとdescのみ手前に表示されてしまう
+  そのためここでz-index(descより大きな値)を指定しておく 
+  */
   position: fixed;
   top: 0;
-  /* アニメーション　元要素で指定　なぜか効かない */
+  z-index: 1000;
+  /* アニメーション 元要素で指定 なぜか効かない */
+  transition: 0.5s;
   /* is-open時 */
 }
 .l-sidebar.is-open {
@@ -285,10 +295,14 @@ l-wrapperで全体の調整
   background: linear-gradient(-90deg, #F2EDE9, #DED8D3) fixed;
   /* shape */
   border-radius: 10px;
+  border: 1px solid #707070;
   /* size */
   width: 4.875rem;
   /* 改行禁止 */
   white-space: nowrap;
+  /* text */
+  font-weight: bold;
+  color: #707070;
 }
 
 /* p-header__menuOpenerも以下のテンプレートを使用している */
@@ -302,18 +316,7 @@ l-wrapperで全体の調整
   font-weight: bold;
 }
 
-.c-underline {
-  /* 
-  初期値=Eat inの下
-  線幅変更箇所あり(Mapテキスト見出しの下)
-  */
-  height: 0.25rem;
-  /* 同箇所にてwidth変更有(Projectにて対応のこと) */
-  width: 2.118125rem;
-  /* color */
-  background-color: #FFF;
-}
-
+/* 不要になったため削除のこと */
 /* 
 基本は記述なし。
 幅の変更などはp-access__map__sourceで行うため。 
@@ -342,9 +345,15 @@ l-wrapperで全体の調整
   /* 選択できなくする cursorはpointerに*/
   user-select: none;
   cursor: pointer;
-  /* layout (flex使って右上端に) */
-  display: flex;
-  justify-content: flex-end;
+  /* 
+  layout
+  block要素、幅をコンテンツサイズに、右寄せ。
+  width: fit-contentはIE対応していないため注意。
+  marginは基本的にutilityで制御しているが、今回はlayout的意味合いが強いためここで。
+  */
+  display: block;
+  width: fit-content;
+  margin-left: auto;
 }
 .p-header__title {
   /* letter */
@@ -381,6 +390,7 @@ l-wrapperで全体の調整
   background-image: url("../../../images/a-burger-surrounded-by-vegetables.jpg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-size: cover;
   /* 
   @mixin内で@contentを記述しているため、他のプロパティの追加が可能
   ここに記述したものは@contentの{}内に書かれていることになる。 
@@ -410,51 +420,44 @@ l-wrapperで全体の調整
 
 .p-service {
   /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
+  /* space */
+  padding: 10/335%;
   /* TB時　横並び */
 }
-.p-service--takeOut {
+.p-service__content {
   /* 
   Size 
   iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
   */
   min-height: 550px;
-  background-image: url("../../../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
   /* flexで並べる */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.p-service--eatIn {
   /* 
-  Size 
-  iPhone5/SEの高さ568pxよりやや小さめをmin-heightに指定。
+  space
   */
-  min-height: 550px;
-  background-image: url("../../../images/bacon-burger.png");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  /* flexで並べる */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 11px;
+  /* 
+  TakeOut,EatInの書き分け必要がある部分はutility(_u-service.scss)にて
+  */
+  /*
+  &__title {
+  } 
+  */
 }
-.p-service__title--takeOut {
-  /* Color */
-  color: #EAEAEA;
-}
-.p-service__title--eatIn {
-  /* Color */
-  color: #FFF;
-}
-.p-service__detail__desc {
+.p-service__content__detail__desc {
   /* baseColor */
   background-color: #FFF;
   /* opacity */
   opacity: 0.8;
+  /* space 予期しない操作による崩れを防ぐためショートハンドは使わず記述 */
+  padding-top: 19px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-right: 14px;
 }
-.p-service__detail__desc__title {
+.p-service__content__detail__desc__title {
   /* 
   現段階でtakeOutとeatInに差はないが、
   のちの背景差し替え等に伴う調整をしやすくするために個別に記述
@@ -484,15 +487,24 @@ l-wrapperで全体の調整
   /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
   position: absolute;
   z-index: 100;
+  /* space */
+  padding: 42px 40px 51px;
 }
 .p-access__desc__title {
   /* letter */
   font-size: 1.875rem;
   /* color */
   color: #FFF;
+  /* 疑似要素を下に */
+  display: flex;
+  flex-direction: column;
+  /* underLine */
 }
-.p-access__desc__underline {
-  /* size */
+.p-access__desc__title::after {
+  content: "";
+  height: 0.25rem;
+  width: 2.118125rem;
+  background-color: #FFF;
   width: 4.6875rem;
   height: 0.125rem;
 }
@@ -584,6 +596,10 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
   display: flex;
   justify-content: space-between;
   /* 
+  スクロールバー表示
+  */
+  overflow-y: scroll;
+  /* 
   &__nav以下については視認性を高めるため下で別途スタイリング。
   */
 }
@@ -591,12 +607,20 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
 sidebarのcontent__nav以下のスタイリングはここで
 */
 .p-sidebar__content__nav {
+  /* margin設定等によるはみ出しを防ぐ→直感的に余白付けられる(要学習) */
+  height: fit-content;
+  /* 上部余白 文字サイズにそろえる必要がないので固定値*/
+  padding-top: 162px;
   /* 以下クラス名ついてないので注意 */
 }
 .p-sidebar__content__nav__classify {
   /* aboutLetter */
   font-size: 1.5rem;
   font-weight: bold;
+}
+.p-sidebar__content__nav ul {
+  /* space(基本的にはmarginで行っている) */
+  padding-bottom: 2.125rem;
 }
 .p-sidebar__content__nav ul li {
   /* aboutLetters */
@@ -627,6 +651,7 @@ sidebarのcontent__nav以下のスタイリングはここで
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 /* 
@@ -648,12 +673,16 @@ I thought it would be redundant to use component and project cascading.
   /* 末尾が--serviceDescのクラスは存在しないため、この領域には記述禁止 */
 }
 .u-text--serviceDesc--takeOut {
+  /* minHeight */
+  min-height: 4.5rem;
   /* Size */
   font-size: 1rem;
   /* Color */
   color: #3C2A10;
 }
 .u-text--serviceDesc--eatIn {
+  /* minHeight */
+  min-height: 4.5rem;
   /* Size */
   font-size: 1rem;
   /* Color */
@@ -676,6 +705,89 @@ I thought it would be redundant to use component and project cascading.
   font-size: 0.875rem;
   /* Color */
   color: #FFF;
+}
+
+.p-header__title {
+  margin-bottom: 38px;
+}
+
+.p-header__search__searchBox {
+  margin-right: 12px;
+}
+
+.p-service__content__title::after {
+  margin-top: 19.3px;
+}
+
+/* service */
+.p-service__content:not(:last-child) {
+  margin-bottom: 20px;
+  /* 横並び後はbottomではなくrightに */
+}
+@media screen and (min-width: 600px) {
+  .p-service__content:not(:last-child) {
+    margin-bottom: 0;
+    margin-right: 41px;
+  }
+}
+
+.p-service__content__detail__desc:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.p-service__content__detail__desc__title {
+  margin-bottom: 20px;
+}
+
+.p-access__desc__title::after {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.p-sidebar__content__nav__classify {
+  margin-left: 46px;
+  margin-bottom: 2.5rem;
+}
+.p-sidebar__content__nav ul {
+  margin-left: 66px;
+}
+.p-sidebar__content__nav ul li:not(:last-child) {
+  margin-bottom: 1.375rem;
+}
+
+.u-text--footerInfo {
+  margin-bottom: 34px;
+}
+
+.u-service__content--takeOut {
+  background-image: url("../../../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.u-service__content--eatIn {
+  background-image: url("../../../images/bacon-burger.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.u-service__content__title--takeOut {
+  /* Color */
+  color: #EAEAEA;
+}
+.u-service__content__title--eatIn {
+  /* Color */
+  color: #FFF;
+  /* 疑似要素を下に */
+  display: flex;
+  flex-direction: column;
+  /* UnderLine */
+}
+.u-service__content__title--eatIn::after {
+  content: "";
+  height: 0.25rem;
+  width: 2.118125rem;
+  background-color: #FFF;
 }
 
 /*# sourceMappingURL=style.css.map */
