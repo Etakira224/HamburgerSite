@@ -1,5 +1,6 @@
 {
     "dartsass.targetDirectory": "css\\",
     "dartsass.sassBinPath": "node_modules\\sass\\sass.js",
-    "dartsass.disableCompileOnSave": true
+    "dartsass.disableCompileOnSave": true,
+    "liveServer.settings.port": 5501
 }

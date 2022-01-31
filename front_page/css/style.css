@@ -200,8 +200,28 @@ l-wrapperで全体の調整
   */
   overflow: hidden;
 }
+@media screen and (min-width: 1025px) {
+  .l-wrapper {
+    overflow: initial;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 80.8854166667% 19.1145833333%;
+    grid-template-rows: 7.2502505847% 87.7380554627% 5.0116939526%;
+    grid-template-areas: "header sidebar" "main sidebar" "footer footer";
+  }
+}
 
 /* PC時はDOM操作の後グリッドで配置 */
+@media screen and (min-width: 1025px) {
+  .l-header {
+    grid-area: header;
+  }
+}
+
 .l-main__service {
   /*
   左右の余白
@@ -212,6 +232,12 @@ l-wrapperで全体の調整
   */
   padding: 20px 5.3333333333% 49px;
 }
+@media screen and (min-width: 1025px) {
+  .l-main {
+    grid-area: main;
+  }
+}
+
 .l-sidebar {
   /* 
   js-menu(sidebar)のサイズはここでまとめて行う
@@ -232,9 +258,23 @@ l-wrapperで全体の調整
   /* アニメーション 元要素で指定 なぜか効かない */
   transition: 0.5s;
   /* is-open時 */
+  /* PC時 */
 }
 .l-sidebar.is-open {
   width: 100%;
+}
+@media screen and (min-width: 1025px) {
+  .l-sidebar {
+    grid-area: sidebar;
+    /* fixedを解除 */
+    position: initial;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .l-footer {
+    grid-area: footer;
+  }
 }
 
 /* 
@@ -422,7 +462,7 @@ l-wrapperで全体の調整
   /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
   /* space */
   padding: 10/335%;
-  /* TB時　横並び */
+  /* TB時 横並び */
 }
 .p-service__content {
   /* 
@@ -559,6 +599,7 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
   /* flex-endでcontentを右に。__maskの幅消えるので指定のこと */
   display: flex;
   justify-content: flex-end;
+  /* p-sidebar */
 }
 .p-sidebar__mask {
   /* baseColor アルファ値使う(50%)ので、rgbaで再度指定 */
@@ -602,7 +643,25 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
   /* 
   &__nav以下については視認性を高めるため下で別途スタイリング。
   */
+  /* p-sidebar__content */
 }
+@media screen and (min-width: 1025px) {
+  .p-sidebar__content__closeButton {
+    display: none;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-sidebar__content {
+    width: 100%;
+    overflow-y: visible;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-sidebar {
+    height: 100%;
+  }
+}
+
 /* 
 sidebarのcontent__nav以下のスタイリングはここで
 */

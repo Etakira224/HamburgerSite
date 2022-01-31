@@ -24,4 +24,11 @@
     &.is-open {
         width: 100%;
     }
+
+    /* PC時 */
+    @include v.breakpoint(pc) {
+        grid-area: sidebar;
+        /* fixedを解除 */
+        position: initial;
+    }
 }

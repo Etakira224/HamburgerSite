@@ -65,10 +65,20 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
         */
 
         &__closeButton {
-    
+            @include v.breakpoint(pc) {
+                display: none;
+            }
+        }
+        /* p-sidebar__content */
+        @include v.breakpoint(pc) {
+            width: 100%;
+            overflow-y: visible;
         }
     }
-
+    /* p-sidebar */
+    @include v.breakpoint(pc) {
+        height: 100%;
+    }
 }
 
 /* 

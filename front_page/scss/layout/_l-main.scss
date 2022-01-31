@@ -17,4 +17,7 @@
     &__access {
         
     }
+    @include v.breakpoint(pc) {
+        grid-area: main;
+    }
 }
