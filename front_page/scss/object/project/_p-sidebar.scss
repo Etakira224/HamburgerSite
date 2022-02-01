@@ -59,7 +59,12 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
         スクロールバー表示
         */
         overflow-y: scroll;
-
+        &__title {
+            display: none;
+            @include v.breakpoint(pc) {
+                display: block;
+            }
+        }
         /* 
         &__nav以下については視認性を高めるため下で別途スタイリング。
         */

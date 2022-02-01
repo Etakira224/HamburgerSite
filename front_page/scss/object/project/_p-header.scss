@@ -13,6 +13,13 @@
     padding: 14px 16px 40px;
     /* baseColor */
     background-color: v.$col-header;
+    @include v.breakpoint(pc) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 31px 0 65px;
+    }
     &__menuOpener {
         /* letter */
         font-size: v.rem(20);
@@ -32,6 +39,9 @@
         display: block;
         width: fit-content;
         margin-left: auto;
+        @include v.breakpoint(pc) {
+            display: none;
+        }
     }
     &__title {
         /* letter */
@@ -43,11 +53,17 @@
         /* layout(左右中央ぞろえ) */
         display: flex;
         justify-content: center;
+        @include v.breakpoint(pc) {
+            height: fit-content;
+        }
     }
     &__search {
         /* layout(左右中央ぞろえ) */
         display: flex;
         justify-content: center;
+        @include v.breakpoint(pc) {
+            height: fit-content;
+        }
         &__searchIcon {
 
         }
@@ -60,6 +76,9 @@
             /* 形状を決定するborderRadiusはコンポーネントで指定してある */
             /* border 線もおそらく変える必要ないのでpxで */
             border: solid 1px v.$col-border;
+            @include v.breakpoint(pc) {
+                height: rem(46);
+            }
         }
         &__searchButton {
 

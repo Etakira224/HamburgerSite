@@ -375,6 +375,15 @@ l-wrapperで全体の調整
   /* baseColor */
   background-color: #FFF7EF;
 }
+@media screen and (min-width: 1025px) {
+  .p-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 31px 0 65px;
+  }
+}
 .p-header__menuOpener {
   /* letter */
   font-size: 1.25rem;
@@ -395,6 +404,11 @@ l-wrapperで全体の調整
   width: fit-content;
   margin-left: auto;
 }
+@media screen and (min-width: 1025px) {
+  .p-header__menuOpener {
+    display: none;
+  }
+}
 .p-header__title {
   /* letter */
   font-size: 2.5rem;
@@ -406,10 +420,20 @@ l-wrapperで全体の調整
   display: flex;
   justify-content: center;
 }
+@media screen and (min-width: 1025px) {
+  .p-header__title {
+    height: fit-content;
+  }
+}
 .p-header__search {
   /* layout(左右中央ぞろえ) */
   display: flex;
   justify-content: center;
+}
+@media screen and (min-width: 1025px) {
+  .p-header__search {
+    height: fit-content;
+  }
 }
 .p-header__search__searchBox {
   /* 
@@ -420,6 +444,11 @@ l-wrapperで全体の調整
   /* 形状を決定するborderRadiusはコンポーネントで指定してある */
   /* border 線もおそらく変える必要ないのでpxで */
   border: solid 1px #707070;
+}
+@media screen and (min-width: 1025px) {
+  .p-header__search__searchBox {
+    height: rem(46);
+  }
 }
 .p-TopHead {
   /* 
@@ -645,6 +674,14 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
   */
   /* p-sidebar__content */
 }
+.p-sidebar__content__title {
+  display: none;
+}
+@media screen and (min-width: 1025px) {
+  .p-sidebar__content__title {
+    display: block;
+  }
+}
 @media screen and (min-width: 1025px) {
   .p-sidebar__content__closeButton {
     display: none;
@@ -768,6 +805,11 @@ I thought it would be redundant to use component and project cascading.
 
 .p-header__title {
   margin-bottom: 38px;
+}
+@media screen and (min-width: 1025px) {
+  .p-header__title {
+    margin-bottom: 0;
+  }
 }
 
 .p-header__search__searchBox {

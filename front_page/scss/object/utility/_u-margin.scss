@@ -2,6 +2,9 @@
 
 .p-header__title {
     margin-bottom: 38px;
+    @include v.breakpoint(pc) {
+        margin-bottom: 0;
+    }
 }
 
 .p-header__search__searchBox {
