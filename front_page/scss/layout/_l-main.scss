@@ -13,6 +13,10 @@
         そのサイズ指定の意味合いを考えて単位を選ぶこと。
         */
         padding: 20px percentage(20/375) 49px;
+        @include v.breakpoint(pc) {
+            padding-top: 120px;
+            padding-bottom: 131px;
+        }
     }
     &__access {
         

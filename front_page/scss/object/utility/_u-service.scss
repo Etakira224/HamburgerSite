@@ -11,6 +11,13 @@
         &--takeOut {
             /* Color */
             color: v.$palette-gallery;
+            @include v.breakpoint(tb) {
+                display: flex;
+                flex-direction: column;
+                &::after {
+                    @include v.underLine;
+                }
+            }
         }
         &--eatIn {
             /* Color */
