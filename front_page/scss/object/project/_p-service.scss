@@ -18,13 +18,19 @@
         space
         */
         padding: 11px;
+        @include v.breakpoint(pc) {
+            width: 45%;
+            min-height: 1196px;
+        }
         /* 
         TakeOut,EatInの書き分け必要がある部分はutility(_u-service.scss)にて
         */
-        /*
         &__title {
+            @include v.breakpoint(pc) {
+                /* 十分に文字が大きい(これ以上大きくなると可読性低くなる)と考えて固定値指定 */
+                font-size: 80px;
+            }
         } 
-        */
         &__detail {
             &__desc {
                 /* baseColor */
@@ -62,6 +68,10 @@
         */
         display: flex;
         justify-content: center;
+    }
+    /* PC時 */
+    @include v.breakpoint(pc) {
+        justify-content: space-between;
     }
 }
 

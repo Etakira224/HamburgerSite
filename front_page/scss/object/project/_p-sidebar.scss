@@ -63,6 +63,10 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
             display: none;
             @include v.breakpoint(pc) {
                 display: block;
+                position: absolute;
+                font-size: v.rem(34);
+                /* font-weightはcomponentで指定済み */
+                color: v.$col-sidebar__content__title;
             }
         }
         /* 

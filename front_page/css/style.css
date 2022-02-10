@@ -233,6 +233,12 @@ l-wrapperで全体の調整
   padding: 20px 5.3333333333% 49px;
 }
 @media screen and (min-width: 1025px) {
+  .l-main__service {
+    padding-top: 120px;
+    padding-bottom: 131px;
+  }
+}
+@media screen and (min-width: 1025px) {
   .l-main {
     grid-area: main;
   }
@@ -354,6 +360,7 @@ l-wrapperで全体の調整
   */
   font-family: Roboto, "M+ 1m", Arial, Meiryo, sans-serif;
   font-weight: bold;
+  /* 色は個別のプロジェクト内で指定 */
 }
 
 /* 不要になったため削除のこと */
@@ -429,10 +436,19 @@ l-wrapperで全体の調整
   /* layout(左右中央ぞろえ) */
   display: flex;
   justify-content: center;
+  position: relative;
 }
 @media screen and (min-width: 1025px) {
   .p-header__search {
     height: fit-content;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-header__search__searchIcon {
+    /* position */
+    position: absolute;
+    top: 35%;
+    left: 2%;
   }
 }
 .p-header__search__searchBox {
@@ -447,9 +463,16 @@ l-wrapperで全体の調整
 }
 @media screen and (min-width: 1025px) {
   .p-header__search__searchBox {
-    height: rem(46);
+    width: 24.75rem;
+    height: 2.875rem;
   }
 }
+@media screen and (min-width: 1025px) {
+  .p-header__search__searchButton {
+    width: 8.5rem;
+  }
+}
+
 .p-TopHead {
   /* 
   Size
@@ -492,6 +515,7 @@ l-wrapperで全体の調整
   /* space */
   padding: 10/335%;
   /* TB時 横並び */
+  /* PC時 */
 }
 .p-service__content {
   /* 
@@ -510,10 +534,18 @@ l-wrapperで全体の調整
   /* 
   TakeOut,EatInの書き分け必要がある部分はutility(_u-service.scss)にて
   */
-  /*
-  &__title {
-  } 
-  */
+}
+@media screen and (min-width: 1025px) {
+  .p-service__content {
+    width: 45%;
+    min-height: 1196px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-service__content__title {
+    /* 十分に文字が大きい(これ以上大きくなると可読性低くなる)と考えて固定値指定 */
+    font-size: 80px;
+  }
 }
 .p-service__content__detail__desc {
   /* baseColor */
@@ -544,6 +576,11 @@ l-wrapperで全体の調整
     justify-content: center;
   }
 }
+@media screen and (min-width: 1025px) {
+  .p-service {
+    justify-content: space-between;
+  }
+}
 
 .p-access {
   /* 
@@ -551,11 +588,12 @@ l-wrapperで全体の調整
   (relative指定で子要素をハンドリングしやすく)
   */
   position: relative;
+  /* 重ね順:下からmask,overlay,desc */
 }
 .p-access__desc {
   /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
   position: absolute;
-  z-index: 100;
+  z-index: 1000;
   /* space */
   padding: 42px 40px 51px;
 }
@@ -585,6 +623,7 @@ l-wrapperで全体の調整
   height: 60.0578871201%;
   /* layout absoluteで重ねる */
   position: absolute;
+  z-index: 100;
 }
 .p-access__mask {
   /* 薄い黒(カンプは白指定だが、不透明度を反転(?)させて黒指定) */
@@ -594,18 +633,26 @@ l-wrapperで全体の調整
   height: 100%;
   /* layout absoluteで重ねる */
   position: absolute;
+  z-index: 10;
 }
 .p-access__map {
   /* 
   divは初期値でwidth100%なので指定必要なし
   but iframeタグで挿入したmapのソースを幅変更のこと
   */
+  position: relative;
+  height: 0;
+  padding-top: 75%;
 }
 .p-access__map__source {
   /* Size
   ・親のmap(divタグ)のwidthに合わせる
   */
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
 }
 
 /* 
@@ -680,6 +727,10 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
 @media screen and (min-width: 1025px) {
   .p-sidebar__content__title {
     display: block;
+    position: absolute;
+    font-size: 2.125rem;
+    /* font-weightはcomponentで指定済み */
+    color: #707070;
   }
 }
 @media screen and (min-width: 1025px) {
@@ -809,6 +860,7 @@ I thought it would be redundant to use component and project cascading.
 @media screen and (min-width: 1025px) {
   .p-header__title {
     margin-bottom: 0;
+    margin-right: 20px;
   }
 }
 
@@ -829,6 +881,11 @@ I thought it would be redundant to use component and project cascading.
   .p-service__content:not(:last-child) {
     margin-bottom: 0;
     margin-right: 41px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-service__content:not(:last-child) {
+    margin-right: 0;
   }
 }
 
@@ -875,6 +932,18 @@ I thought it would be redundant to use component and project cascading.
 .u-service__content__title--takeOut {
   /* Color */
   color: #EAEAEA;
+}
+@media screen and (min-width: 600px) {
+  .u-service__content__title--takeOut {
+    display: flex;
+    flex-direction: column;
+  }
+  .u-service__content__title--takeOut::after {
+    content: "";
+    height: 0.25rem;
+    width: 2.118125rem;
+    background-color: #FFF;
+  }
 }
 .u-service__content__title--eatIn {
   /* Color */

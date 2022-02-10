@@ -61,11 +61,17 @@
         /* layout(左右中央ぞろえ) */
         display: flex;
         justify-content: center;
+        position: relative;
         @include v.breakpoint(pc) {
             height: fit-content;
         }
         &__searchIcon {
-
+            @include v.breakpoint(pc) {
+                /* position */
+                position: absolute;
+                top: 35%;
+                left: 2%;
+            }
         }
         &__searchBox {
             /* 
@@ -77,11 +83,14 @@
             /* border 線もおそらく変える必要ないのでpxで */
             border: solid 1px v.$col-border;
             @include v.breakpoint(pc) {
-                height: rem(46);
+                width: v.rem(396);
+                height: v.rem(46);
             }
         }
         &__searchButton {
-
+            @include v.breakpoint(pc) {
+                width: v.rem(136);
+            }
         }
     }
 }
