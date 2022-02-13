@@ -18,14 +18,22 @@
         space
         */
         padding: 11px;
+        @include v.breakpoint(tb) {
+            height: 85vh;
+        }
         @include v.breakpoint(pc) {
             width: 45%;
             min-height: 1196px;
+            height: initial;
+            padding: 20px;
         }
         /* 
         TakeOut,EatInの書き分け必要がある部分はutility(_u-service.scss)にて
         */
         &__title {
+            @include v.breakpoint(tb) {
+                font-size: v.rem(44);
+            }
             @include v.breakpoint(pc) {
                 /* 十分に文字が大きい(これ以上大きくなると可読性低くなる)と考えて固定値指定 */
                 font-size: 80px;
@@ -43,16 +51,8 @@
                 padding-bottom: 20px;
                 padding-right: 14px;
                 &__title {
-                    /* 
-                    現段階でtakeOutとeatInに差はないが、
-                    のちの背景差し替え等に伴う調整をしやすくするために個別に記述
-                    なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
-                    */
-                    &__takeOut {
-        
-                    }
-                    &__eatIn {
-        
+                    @include v.breakpoint(pc) {
+                        font-size: v.rem(24);
                     }
                 }
             }

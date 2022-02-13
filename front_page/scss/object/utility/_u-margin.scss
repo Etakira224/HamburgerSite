@@ -10,10 +10,16 @@
 
 .p-header__search__searchBox {
     margin-right: 12px;
+    @include v.breakpoint(tb) {
+        margin-right: 14px;
+    }
 }
 
 .p-service__content__title::after {
     margin-top: 19.3px;
+    @include v.breakpoint(pc) {
+        margin-top: 34.5px;
+    }
 }
 
 /* service */
@@ -46,9 +52,15 @@
     &__classify {
         margin-left: 46px;
         margin-bottom: v.rem(40);
+        @include v.breakpoint(pc) {
+            margin-left: 0;
+        }
     }
     ul {
         margin-left: 66px;
+        @include v.breakpoint(pc) {
+            margin-left: 20px;
+        }
         li:not(:last-child) {
             margin-bottom: v.rem(22);
         }

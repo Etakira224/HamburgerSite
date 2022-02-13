@@ -121,4 +121,10 @@ $imgPath: "../../../images/";
     height: rem(4);
     width: rem(33.89);
     background-color: $palette-white;
+    @include breakpoint(tb) {
+        width: rem(36);
+    }
+    @include breakpoint(pc) {
+        width: rem(63);
+    }
 }
