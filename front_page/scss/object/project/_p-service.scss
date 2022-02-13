@@ -2,8 +2,20 @@
 
 .p-service {
     /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
-    /* space */
-    padding: 10/335%;
+    /* TB時 横並び */
+    @include v.breakpoint(tb) {
+        /* 
+        配置
+        flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
+        左右の余白はlayoutで対応済み
+        */
+        display: flex;
+        justify-content: center;
+    }
+    /* PC時 */
+    @include v.breakpoint(pc) {
+        justify-content: space-around;
+    }
     &__content {
         /* 
         Size 
@@ -57,21 +69,6 @@
                 }
             }
         }
-    }
-
-    /* TB時 横並び */
-    @include v.breakpoint(tb) {
-        /* 
-        配置
-        flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
-        左右の余白はlayoutで対応済み
-        */
-        display: flex;
-        justify-content: center;
-    }
-    /* PC時 */
-    @include v.breakpoint(pc) {
-        justify-content: space-between;
     }
 }
 

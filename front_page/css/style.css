@@ -168,6 +168,7 @@ pで当てるのでパス注意。
 /* @contentを使うことで、呼出時に他のbackgroundプロパティ追加できる。 */
 /* 後から追加 */
 /* underline   eatInの下を基準に。疑似要素afterで指定のこと*/
+/* 個別への対応に巻き込んではいけない。他の関係ないprojectへの影響。 */
 * {
   /* 
   aboutTexts  
@@ -478,6 +479,8 @@ l-wrapperで全体の調整
   /* 形状を決定するborderRadiusはコンポーネントで指定してある */
   /* border 線もおそらく変える必要ないのでpxで */
   border: solid 1px #707070;
+  /* 入力開始位置 */
+  padding-left: 2.5rem;
 }
 @media screen and (min-width: 600px) {
   .p-header__search__searchBox {
@@ -541,10 +544,24 @@ l-wrapperで全体の調整
 
 .p-service {
   /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
-  /* space */
-  padding: 10/335%;
   /* TB時 横並び */
   /* PC時 */
+}
+@media screen and (min-width: 600px) {
+  .p-service {
+    /* 
+    配置
+    flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
+    左右の余白はlayoutで対応済み
+    */
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-service {
+    justify-content: space-around;
+  }
 }
 .p-service__content {
   /* 
@@ -604,22 +621,6 @@ l-wrapperで全体の調整
     font-size: 1.5rem;
   }
 }
-@media screen and (min-width: 600px) {
-  .p-service {
-    /* 
-    配置
-    flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
-    左右の余白はlayoutで対応済み
-    */
-    display: flex;
-    justify-content: center;
-  }
-}
-@media screen and (min-width: 1025px) {
-  .p-service {
-    justify-content: space-between;
-  }
-}
 
 .p-access {
   /* 
@@ -628,41 +629,6 @@ l-wrapperで全体の調整
   */
   position: relative;
   /* 重ね順:下からmask,overlay,desc */
-}
-.p-access__desc {
-  /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
-  position: absolute;
-  z-index: 1000;
-  /* space */
-  padding: 42px 40px 51px;
-}
-.p-access__desc__title {
-  /* letter */
-  font-size: 1.875rem;
-  /* color */
-  color: #FFF;
-  /* 疑似要素を下に */
-  display: flex;
-  flex-direction: column;
-  /* underLine */
-}
-.p-access__desc__title::after {
-  content: "";
-  height: 0.25rem;
-  width: 2.118125rem;
-  background-color: #FFF;
-  width: 4.6875rem;
-  height: 0.125rem;
-}
-@media screen and (min-width: 600px) {
-  .p-access__desc__title::after {
-    width: 2.25rem;
-  }
-}
-@media screen and (min-width: 1025px) {
-  .p-access__desc__title::after {
-    width: 3.9375rem;
-  }
 }
 .p-access__overlay {
   /* 濃い黒 */
@@ -673,6 +639,16 @@ l-wrapperで全体の調整
   /* layout absoluteで重ねる */
   position: absolute;
   z-index: 100;
+}
+@media screen and (min-width: 600px) {
+  .p-access__overlay {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-access__overlay {
+    width: 61.1719253059%;
+  }
 }
 .p-access__mask {
   /* 薄い黒(カンプは白指定だが、不透明度を反転(?)させて黒指定) */
@@ -690,8 +666,13 @@ l-wrapperで全体の調整
   but iframeタグで挿入したmapのソースを幅変更のこと
   */
   position: relative;
-  height: 0;
-  padding-top: 75%;
+  height: fit-content;
+}
+@media screen and (min-width: 1025px) {
+  .p-access__map {
+    /* 下の謎の余白を半ば強引に消した */
+    min-height: 646px;
+  }
 }
 .p-access__map__source {
   /* Size
@@ -702,6 +683,39 @@ l-wrapperで全体の調整
   left: 0;
   width: 100%;
   height: 100%;
+}
+.p-access__map__desc {
+  /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
+  position: relative;
+  z-index: 1000;
+  /* space */
+  padding: 42px 40px 51px;
+  height: fit-content;
+}
+@media screen and (min-width: 1025px) {
+  .p-access__map__desc {
+    width: 61.1719253059%;
+    /* paddingをremで指定すると文字が大きいほど余白大きいということになるので、暫定で固定値 */
+    padding: 83px 134px 40px 119px;
+  }
+}
+.p-access__map__desc__title {
+  /* letter */
+  font-size: 1.875rem;
+  /* color */
+  color: #FFF;
+  /* 疑似要素を下に */
+  display: flex;
+  flex-direction: column;
+  /* underLine */
+}
+.p-access__map__desc__title::after {
+  content: "";
+  height: 0.25rem;
+  width: 2.118125rem;
+  background-color: #FFF;
+  width: 4.6875rem;
+  height: 0.125rem;
 }
 
 /* 
@@ -962,9 +976,15 @@ I thought it would be redundant to use component and project cascading.
   margin-bottom: 20px;
 }
 
-.p-access__desc__title::after {
+.p-access__map__desc__title::after {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+@media screen and (min-width: 1025px) {
+  .p-access__map__desc__title::after {
+    margin-top: 55.5px;
+    margin-bottom: 63.5px;
+  }
 }
 
 .p-sidebar__content__nav__classify {
@@ -1018,16 +1038,12 @@ I thought it would be redundant to use component and project cascading.
     height: 0.25rem;
     width: 2.118125rem;
     background-color: #FFF;
-  }
-}
-@media screen and (min-width: 600px) and (min-width: 600px) {
-  .u-service__content__title--takeOut::after {
     width: 2.25rem;
   }
 }
 @media screen and (min-width: 600px) and (min-width: 1025px) {
   .u-service__content__title--takeOut::after {
-    width: 3.9375rem;
+    width: rem(63);
   }
 }
 .u-service__content__title--eatIn {
@@ -1051,7 +1067,7 @@ I thought it would be redundant to use component and project cascading.
 }
 @media screen and (min-width: 1025px) {
   .u-service__content__title--eatIn::after {
-    width: 3.9375rem;
+    width: rem(63);
   }
 }
 

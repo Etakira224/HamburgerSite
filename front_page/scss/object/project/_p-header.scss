@@ -91,6 +91,8 @@
             /* 形状を決定するborderRadiusはコンポーネントで指定してある */
             /* border 線もおそらく変える必要ないのでpxで */
             border: solid 1px v.$col-border;
+            /* 入力開始位置 */
+            padding-left: v.rem(40);
             @include v.breakpoint(tb) {
                 width: v.rem(396);
                 height: v.rem(46);

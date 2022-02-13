@@ -16,6 +16,10 @@
                 flex-direction: column;
                 &::after {
                     @include v.underLine;
+                    width: v.rem(36);
+                    @include v.breakpoint(pc) {
+                        width: rem(63);
+                    }
                 }
             }
         }
@@ -28,6 +32,12 @@
             /* UnderLine */
             &::after {
                 @include v.underLine;
+                @include v.breakpoint(tb) {
+                    width: v.rem(36);
+                }
+                @include v.breakpoint(pc) {
+                    width: rem(63);
+                }
             }
         }
     }

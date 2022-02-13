@@ -43,9 +43,13 @@
     margin-bottom: 20px;
 }
 
-.p-access__desc__title::after {
+.p-access__map__desc__title::after {
     margin-top: 20px;
     margin-bottom: 20px;
+    @include v.breakpoint(pc) {
+        margin-top: 55.5px;
+        margin-bottom: 63.5px;
+    }
 }
 
 .p-sidebar__content__nav {
