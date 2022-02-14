@@ -10,10 +10,16 @@
 
 .p-header__search__searchBox {
     margin-right: 12px;
+    @include v.breakpoint(tb) {
+        margin-right: 14px;
+    }
 }
 
 .p-service__content__title::after {
     margin-top: 19.3px;
+    @include v.breakpoint(pc) {
+        margin-top: 34.5px;
+    }
 }
 
 /* service */
@@ -37,18 +43,28 @@
     margin-bottom: 20px;
 }
 
-.p-access__desc__title::after {
+.p-access__map__desc__title::after {
     margin-top: 20px;
     margin-bottom: 20px;
+    @include v.breakpoint(pc) {
+        margin-top: 55.5px;
+        margin-bottom: 63.5px;
+    }
 }
 
 .p-sidebar__content__nav {
     &__classify {
         margin-left: 46px;
         margin-bottom: v.rem(40);
+        @include v.breakpoint(pc) {
+            margin-left: 0;
+        }
     }
     ul {
         margin-left: 66px;
+        @include v.breakpoint(pc) {
+            margin-left: 20px;
+        }
         li:not(:last-child) {
             margin-bottom: v.rem(22);
         }

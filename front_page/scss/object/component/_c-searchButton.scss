@@ -15,7 +15,8 @@
     width: v.rem(78);
     /* 改行禁止 */
     white-space: nowrap;
-    /* text */
+    /* text button内テキストはやや小さいためfsz指定必要*/
+    font-size: 1rem;
     font-weight: bold;
     color: v.$palette-doveGray;
 }

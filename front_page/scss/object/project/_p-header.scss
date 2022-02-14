@@ -2,7 +2,7 @@
 @use "../../foundation/variables" as v;
 
 .p-header {
-    /* Size　*/
+    /* Size*/
     width: 100%;
     height: v.rem(217);
     /*
@@ -39,6 +39,9 @@
         display: block;
         width: fit-content;
         margin-left: auto;
+        @include v.breakpoint(tb) {
+            font-size: v.rem(34);
+        }
         @include v.breakpoint(pc) {
             display: none;
         }
@@ -55,6 +58,7 @@
         justify-content: center;
         @include v.breakpoint(pc) {
             height: fit-content;
+            font-size: v.rem(64);
         }
     }
     &__search {
@@ -72,6 +76,11 @@
                 top: 35%;
                 left: 2%;
             }
+            &::before {
+                position: absolute;
+                top: 35%;
+                margin-left: 1.0%;
+            }
         }
         &__searchBox {
             /* 
@@ -82,13 +91,15 @@
             /* 形状を決定するborderRadiusはコンポーネントで指定してある */
             /* border 線もおそらく変える必要ないのでpxで */
             border: solid 1px v.$col-border;
-            @include v.breakpoint(pc) {
+            /* 入力開始位置 */
+            padding-left: v.rem(40);
+            @include v.breakpoint(tb) {
                 width: v.rem(396);
                 height: v.rem(46);
             }
         }
         &__searchButton {
-            @include v.breakpoint(pc) {
+            @include v.breakpoint(tb) {
                 width: v.rem(136);
             }
         }

@@ -116,6 +116,7 @@ $imgPath: "../../../images/";
 
 /* 後から追加 */
 /* underline   eatInの下を基準に。疑似要素afterで指定のこと*/
+/* 個別への対応に巻き込んではいけない。他の関係ないprojectへの影響。 */
 @mixin underLine {
     content: "";
     height: rem(4);

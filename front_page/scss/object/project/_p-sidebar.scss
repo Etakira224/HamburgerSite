@@ -79,9 +79,13 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
             }
         }
         /* p-sidebar__content */
+        @include v.breakpoint(tb) {
+            width: percentage(367/834);
+        }
         @include v.breakpoint(pc) {
             width: 100%;
             overflow-y: visible;
+            padding: 82px 47px 25px percentage(46/367);
         }
     }
     /* p-sidebar */
@@ -102,6 +106,7 @@ sidebarのcontent__nav以下のスタイリングはここで
         /* aboutLetter */
         font-size: v.rem(24);
         font-weight: bold;
+        color: v.$palette-doveGray;
     }
     /* 以下クラス名ついてないので注意 */
     ul {
@@ -114,8 +119,7 @@ sidebarのcontent__nav以下のスタイリングはここで
                 /* aboutLetter */
                 font-size: v.rem(20);
                 text-decoration: none;
-                /* color  inheritとすることで青→テーマデフォルト色 */
-                color: inherit;
+                color: v.$palette-doveGray;
                 &:hover {
                     /* hover */
                     opacity: .6;

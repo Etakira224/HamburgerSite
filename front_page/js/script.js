@@ -10,7 +10,6 @@ const openSidebar = () => {
 const closeSidebar = () => {
     menu.classList.remove('is-open')
     console.log('CloseSidebar')
-    console.log
 };
 console.log(btn);
 console.log(menu);

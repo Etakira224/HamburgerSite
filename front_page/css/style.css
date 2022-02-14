@@ -168,6 +168,7 @@ pで当てるのでパス注意。
 /* @contentを使うことで、呼出時に他のbackgroundプロパティ追加できる。 */
 /* 後から追加 */
 /* underline   eatInの下を基準に。疑似要素afterで指定のこと*/
+/* 個別への対応に巻き込んではいけない。他の関係ないprojectへの影響。 */
 * {
   /* 
   aboutTexts  
@@ -210,7 +211,7 @@ l-wrapperで全体の調整
   .gridContainer {
     display: grid;
     grid-template-columns: 80.8854166667% 19.1145833333%;
-    grid-template-rows: 7.2502505847% 87.7380554627% 5.0116939526%;
+    grid-template-rows: 13.5625rem auto auto;
     grid-template-areas: "header sidebar" "main sidebar" "footer footer";
   }
 }
@@ -263,6 +264,9 @@ l-wrapperで全体の調整
   z-index: 1000;
   /* アニメーション 元要素で指定 なぜか効かない */
   transition: 0.5s;
+  /* 状態の始点 */
+  width: 0;
+  right: 0;
   /* is-open時 */
   /* PC時 */
 }
@@ -271,6 +275,9 @@ l-wrapperで全体の調整
 }
 @media screen and (min-width: 1025px) {
   .l-sidebar {
+    /* width:0;を消し、transitionも無効化する */
+    width: 100%;
+    transition: none;
     grid-area: sidebar;
     /* fixedを解除 */
     position: initial;
@@ -346,7 +353,8 @@ l-wrapperで全体の調整
   width: 4.875rem;
   /* 改行禁止 */
   white-space: nowrap;
-  /* text */
+  /* text button内テキストはやや小さいためfsz指定必要*/
+  font-size: 1rem;
   font-weight: bold;
   color: #707070;
 }
@@ -370,7 +378,7 @@ l-wrapperで全体の調整
 */
 /* &__menuOpenerは.c-titleを使用している */
 .p-header {
-  /* Size　*/
+  /* Size*/
   width: 100%;
   height: 13.5625rem;
   /*
@@ -411,6 +419,11 @@ l-wrapperで全体の調整
   width: fit-content;
   margin-left: auto;
 }
+@media screen and (min-width: 600px) {
+  .p-header__menuOpener {
+    font-size: 2.125rem;
+  }
+}
 @media screen and (min-width: 1025px) {
   .p-header__menuOpener {
     display: none;
@@ -430,6 +443,7 @@ l-wrapperで全体の調整
 @media screen and (min-width: 1025px) {
   .p-header__title {
     height: fit-content;
+    font-size: 4rem;
   }
 }
 .p-header__search {
@@ -451,6 +465,11 @@ l-wrapperで全体の調整
     left: 2%;
   }
 }
+.p-header__search__searchIcon::before {
+  position: absolute;
+  top: 35%;
+  margin-left: 1%;
+}
 .p-header__search__searchBox {
   /* 
   Size 
@@ -460,14 +479,16 @@ l-wrapperで全体の調整
   /* 形状を決定するborderRadiusはコンポーネントで指定してある */
   /* border 線もおそらく変える必要ないのでpxで */
   border: solid 1px #707070;
+  /* 入力開始位置 */
+  padding-left: 2.5rem;
 }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 600px) {
   .p-header__search__searchBox {
     width: 24.75rem;
     height: 2.875rem;
   }
 }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 600px) {
   .p-header__search__searchButton {
     width: 8.5rem;
   }
@@ -505,17 +526,42 @@ l-wrapperで全体の調整
   display: flex;
   align-items: center;
 }
+@media screen and (min-width: 1025px) {
+  .p-TopHead {
+    /* 文字を3倍に拡大したとしても収まるため固定値で */
+    height: 530px;
+  }
+}
 .p-TopHead__title {
   /* Color */
   color: #FFF;
 }
+@media screen and (min-width: 1025px) {
+  .p-TopHead__title {
+    font-size: 2.5rem;
+  }
+}
 
 .p-service {
   /* Heightはそれぞれで指定。(SPとTB以上で書き分けの必要がなくなる) */
-  /* space */
-  padding: 10/335%;
   /* TB時 横並び */
   /* PC時 */
+}
+@media screen and (min-width: 600px) {
+  .p-service {
+    /* 
+    配置
+    flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
+    左右の余白はlayoutで対応済み
+    */
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-service {
+    justify-content: space-around;
+  }
 }
 .p-service__content {
   /* 
@@ -535,10 +581,22 @@ l-wrapperで全体の調整
   TakeOut,EatInの書き分け必要がある部分はutility(_u-service.scss)にて
   */
 }
+@media screen and (min-width: 600px) {
+  .p-service__content {
+    height: 85vh;
+  }
+}
 @media screen and (min-width: 1025px) {
   .p-service__content {
     width: 45%;
     min-height: 1196px;
+    height: initial;
+    padding: 20px;
+  }
+}
+@media screen and (min-width: 600px) {
+  .p-service__content__title {
+    font-size: 2.75rem;
   }
 }
 @media screen and (min-width: 1025px) {
@@ -558,27 +616,9 @@ l-wrapperで全体の調整
   padding-bottom: 20px;
   padding-right: 14px;
 }
-.p-service__content__detail__desc__title {
-  /* 
-  現段階でtakeOutとeatInに差はないが、
-  のちの背景差し替え等に伴う調整をしやすくするために個別に記述
-  なお、この領域に記述禁止(__desc__titleで終わるクラス名がないため)
-  */
-}
-@media screen and (min-width: 600px) {
-  .p-service {
-    /* 
-    配置
-    flexで要素を横並び。さらにjustify-contentで横軸中央寄せ
-    左右の余白はlayoutで対応済み
-    */
-    display: flex;
-    justify-content: center;
-  }
-}
 @media screen and (min-width: 1025px) {
-  .p-service {
-    justify-content: space-between;
+  .p-service__content__detail__desc__title {
+    font-size: 1.5rem;
   }
 }
 
@@ -590,31 +630,6 @@ l-wrapperで全体の調整
   position: relative;
   /* 重ね順:下からmask,overlay,desc */
 }
-.p-access__desc {
-  /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
-  position: absolute;
-  z-index: 1000;
-  /* space */
-  padding: 42px 40px 51px;
-}
-.p-access__desc__title {
-  /* letter */
-  font-size: 1.875rem;
-  /* color */
-  color: #FFF;
-  /* 疑似要素を下に */
-  display: flex;
-  flex-direction: column;
-  /* underLine */
-}
-.p-access__desc__title::after {
-  content: "";
-  height: 0.25rem;
-  width: 2.118125rem;
-  background-color: #FFF;
-  width: 4.6875rem;
-  height: 0.125rem;
-}
 .p-access__overlay {
   /* 濃い黒 */
   opacity: 0.29;
@@ -624,6 +639,16 @@ l-wrapperで全体の調整
   /* layout absoluteで重ねる */
   position: absolute;
   z-index: 100;
+}
+@media screen and (min-width: 600px) {
+  .p-access__overlay {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .p-access__overlay {
+    width: 61.1719253059%;
+  }
 }
 .p-access__mask {
   /* 薄い黒(カンプは白指定だが、不透明度を反転(?)させて黒指定) */
@@ -641,8 +666,13 @@ l-wrapperで全体の調整
   but iframeタグで挿入したmapのソースを幅変更のこと
   */
   position: relative;
-  height: 0;
-  padding-top: 75%;
+  height: fit-content;
+}
+@media screen and (min-width: 1025px) {
+  .p-access__map {
+    /* 下の謎の余白を半ば強引に消した */
+    min-height: 646px;
+  }
 }
 .p-access__map__source {
   /* Size
@@ -653,6 +683,39 @@ l-wrapperで全体の調整
   left: 0;
   width: 100%;
   height: 100%;
+}
+.p-access__map__desc {
+  /* aboutPosition  (mapの上に重なる形に→z-indexで最前面に配置)*/
+  position: relative;
+  z-index: 1000;
+  /* space */
+  padding: 42px 40px 51px;
+  height: fit-content;
+}
+@media screen and (min-width: 1025px) {
+  .p-access__map__desc {
+    width: 61.1719253059%;
+    /* paddingをremで指定すると文字が大きいほど余白大きいということになるので、暫定で固定値 */
+    padding: 83px 134px 40px 119px;
+  }
+}
+.p-access__map__desc__title {
+  /* letter */
+  font-size: 1.875rem;
+  /* color */
+  color: #FFF;
+  /* 疑似要素を下に */
+  display: flex;
+  flex-direction: column;
+  /* underLine */
+}
+.p-access__map__desc__title::after {
+  content: "";
+  height: 0.25rem;
+  width: 2.118125rem;
+  background-color: #FFF;
+  width: 4.6875rem;
+  height: 0.125rem;
 }
 
 /* 
@@ -738,10 +801,16 @@ _nav以下については末尾で別途記載。ネストの深化を防ぐた�
     display: none;
   }
 }
+@media screen and (min-width: 600px) {
+  .p-sidebar__content {
+    width: 44.0047961631%;
+  }
+}
 @media screen and (min-width: 1025px) {
   .p-sidebar__content {
     width: 100%;
     overflow-y: visible;
+    padding: 82px 47px 25px 12.5340599455%;
   }
 }
 @media screen and (min-width: 1025px) {
@@ -764,6 +833,7 @@ sidebarのcontent__nav以下のスタイリングはここで
   /* aboutLetter */
   font-size: 1.5rem;
   font-weight: bold;
+  color: #707070;
 }
 .p-sidebar__content__nav ul {
   /* space(基本的にはmarginで行っている) */
@@ -777,8 +847,7 @@ sidebarのcontent__nav以下のスタイリングはここで
   /* aboutLetter */
   font-size: 1.25rem;
   text-decoration: none;
-  /* color  inheritとすることで青→テーマデフォルト色 */
-  color: inherit;
+  color: #707070;
 }
 .p-sidebar__content__nav ul li a:hover {
   /* hover */
@@ -867,9 +936,19 @@ I thought it would be redundant to use component and project cascading.
 .p-header__search__searchBox {
   margin-right: 12px;
 }
+@media screen and (min-width: 600px) {
+  .p-header__search__searchBox {
+    margin-right: 14px;
+  }
+}
 
 .p-service__content__title::after {
   margin-top: 19.3px;
+}
+@media screen and (min-width: 1025px) {
+  .p-service__content__title::after {
+    margin-top: 34.5px;
+  }
 }
 
 /* service */
@@ -897,17 +976,33 @@ I thought it would be redundant to use component and project cascading.
   margin-bottom: 20px;
 }
 
-.p-access__desc__title::after {
+.p-access__map__desc__title::after {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+@media screen and (min-width: 1025px) {
+  .p-access__map__desc__title::after {
+    margin-top: 55.5px;
+    margin-bottom: 63.5px;
+  }
 }
 
 .p-sidebar__content__nav__classify {
   margin-left: 46px;
   margin-bottom: 2.5rem;
 }
+@media screen and (min-width: 1025px) {
+  .p-sidebar__content__nav__classify {
+    margin-left: 0;
+  }
+}
 .p-sidebar__content__nav ul {
   margin-left: 66px;
+}
+@media screen and (min-width: 1025px) {
+  .p-sidebar__content__nav ul {
+    margin-left: 20px;
+  }
 }
 .p-sidebar__content__nav ul li:not(:last-child) {
   margin-bottom: 1.375rem;
@@ -943,6 +1038,12 @@ I thought it would be redundant to use component and project cascading.
     height: 0.25rem;
     width: 2.118125rem;
     background-color: #FFF;
+    width: 2.25rem;
+  }
+}
+@media screen and (min-width: 600px) and (min-width: 1025px) {
+  .u-service__content__title--takeOut::after {
+    width: rem(63);
   }
 }
 .u-service__content__title--eatIn {
@@ -958,6 +1059,16 @@ I thought it would be redundant to use component and project cascading.
   height: 0.25rem;
   width: 2.118125rem;
   background-color: #FFF;
+}
+@media screen and (min-width: 600px) {
+  .u-service__content__title--eatIn::after {
+    width: 2.25rem;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .u-service__content__title--eatIn::after {
+    width: rem(63);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
