@@ -1,27 +1,31 @@
 @use "../foundation/variables" as v;
 
 .l-main {
+    @include v.breakpoint(pc) {
+        grid-area: main;
+    }
     &__TopHead {
         
     }
-    &__service {
-        /*
-        左右の余白
-        (ここでvwか…?　いや、スクロールバーのことを考えると%か。) 
-        これにしてみる↓
-        https://www.nxworld.net/sass-number-operations-and-functions.html
-        そのサイズ指定の意味合いを考えて単位を選ぶこと。
-        */
-        padding: 20px percentage(20/375) 49px;
-        @include v.breakpoint(pc) {
-            padding-top: 120px;
-            padding-bottom: 131px;
-        }
+    &__article {
+
     }
-    &__access {
-        
+    &__citation {
+
     }
-    @include v.breakpoint(pc) {
-        grid-area: main;
+    &__burgerContainer {
+
+    }
+    &__codeEmbed {
+
+    }
+    &__table {
+
+    }
+    &__button {
+
+    }
+    &__emphasis {
+
     }
 }

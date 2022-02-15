@@ -223,28 +223,11 @@ l-wrapperで全体の調整
   }
 }
 
-.l-main__service {
-  /*
-  左右の余白
-  (ここでvwか…?　いや、スクロールバーのことを考えると%か。) 
-  これにしてみる↓
-  https://www.nxworld.net/sass-number-operations-and-functions.html
-  そのサイズ指定の意味合いを考えて単位を選ぶこと。
-  */
-  padding: 20px 5.3333333333% 49px;
-}
-@media screen and (min-width: 1025px) {
-  .l-main__service {
-    padding-top: 120px;
-    padding-bottom: 131px;
-  }
-}
 @media screen and (min-width: 1025px) {
   .l-main {
     grid-area: main;
   }
 }
-
 .l-sidebar {
   /* 
   js-menu(sidebar)のサイズはここでまとめて行う
@@ -481,54 +464,6 @@ l-wrapperで全体の調整
 @media screen and (min-width: 600px) {
   .p-header__search__searchButton {
     width: 8.5rem;
-  }
-}
-
-.p-TopHead {
-  /* 
-  Size
-  */
-  height: 17.8125rem;
-  /* BackGround */
-  background-image: url("../../../images/a-burger-surrounded-by-vegetables.jpg");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-  /* 
-  @mixin内で@contentを記述しているため、他のプロパティの追加が可能
-  ここに記述したものは@contentの{}内に書かれていることになる。 
-  */
-  /* 
-  背景縮小
-  background-size: cover;  縦横比保持。覆うように。(大)
-  background-size: contain; 縦横比保持。収まるように。(小)
-  どちらかを値指定。他方をauto(元の比率を維持)とすることもできる。
-  */
-  background-size: cover;
-  /* 
-  左右の余白 (上下は中央寄せで対応かな)
-  →but,予想外に多くの文字が入る可能性やユーザーの文字拡大の可能性も踏まえて
-  上下左右に取っておこうか。
-  その意図なら固定値でいいはずなのでpxで指定　
-  */
-  padding: 25px;
-  /* 上下中央揃え */
-  display: flex;
-  align-items: center;
-}
-@media screen and (min-width: 1025px) {
-  .p-TopHead {
-    /* 文字を3倍に拡大したとしても収まるため固定値で */
-    height: 530px;
-  }
-}
-.p-TopHead__title {
-  /* Color */
-  color: #FFF;
-}
-@media screen and (min-width: 1025px) {
-  .p-TopHead__title {
-    font-size: 2.5rem;
   }
 }
 
