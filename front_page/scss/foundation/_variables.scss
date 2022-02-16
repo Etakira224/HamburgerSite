@@ -104,7 +104,7 @@ backgroundImage
 タイポ防止。呼び出し時はファイル名.拡張子の記述でOKになる。
 pで当てるのでパス注意。 
 */
-$imgPath: "../../../images/";
+$imgPath: "../images/";
 /* @contentを使うことで、呼出時に他のbackgroundプロパティ追加できる。 */
 @mixin background-image($fileName) {
     background-image: url($imgPath + $fileName);

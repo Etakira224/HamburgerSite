@@ -500,7 +500,7 @@ l-wrapperで全体の調整
   */
   height: 17.8125rem;
   /* BackGround */
-  background-image: url("../../../images/a-burger-surrounded-by-vegetables.jpg");
+  background-image: url("../images/a-burger-surrounded-by-vegetables.jpg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -1013,13 +1013,13 @@ I thought it would be redundant to use component and project cascading.
 }
 
 .u-service__content--takeOut {
-  background-image: url("../../../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
+  background-image: url("../images/three-burgers-on-brown-wooden-tray-between-white-ceramic.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
 }
 .u-service__content--eatIn {
-  background-image: url("../../../images/bacon-burger.png");
+  background-image: url("../images/bacon-burger.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
